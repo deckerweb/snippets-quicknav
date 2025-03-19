@@ -1,0 +1,283 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Snippets QuickNav\n"
+"POT-Creation-Date: 2025-03-20 00:09+0100\n"
+"PO-Revision-Date: 2025-03-20 00:10+0100\n"
+"Last-Translator: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
+"Language-Team: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: snippets-quicknav.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: snippets-quicknav.php:383
+msgid "Snippets"
+msgstr "Snippets"
+
+#: snippets-quicknav.php:452
+msgid "SAFE MODE is active 🔥"
+msgstr "SAFE MODE ist aktiv 🔥"
+
+#: snippets-quicknav.php:460
+msgid "Code Snippets Safe Mode active 🔥"
+msgstr "Code Snippets Abgesicherter Modus aktiv 🔥"
+
+#: snippets-quicknav.php:471 snippets-quicknav.php:479
+msgid "SCRIPT_DEBUG is on ⚠"
+msgstr "SCRIPT_DEBUG ist an ⚠"
+
+#: snippets-quicknav.php:549 snippets-quicknav.php:630
+msgid "Active Snippets"
+msgstr "Aktive Snippets"
+
+#: snippets-quicknav.php:592 snippets-quicknav.php:631
+msgid "Inactive Snippets"
+msgstr "Inaktive Snippets"
+
+#: snippets-quicknav.php:620
+msgid "Snippets by Status"
+msgstr "Snippets nach Status"
+
+#: snippets-quicknav.php:629
+msgid "All Snippets"
+msgstr "Alle Snippets"
+
+#: snippets-quicknav.php:632
+msgid "Recently Active Snippets"
+msgstr "Kürzlich aktive Snippets"
+
+#: snippets-quicknav.php:655
+msgid "Snippets by Type"
+msgstr "Snippets nach Typ"
+
+#: snippets-quicknav.php:662
+msgid "Functions"
+msgstr "Funktionen"
+
+#: snippets-quicknav.php:666 snippets-quicknav.php:770
+msgid "Content"
+msgstr "Inhalt"
+
+#: snippets-quicknav.php:673
+msgid "Styles"
+msgstr "Stile"
+
+#: snippets-quicknav.php:678
+msgid "Scripts"
+msgstr "Skripte"
+
+#: snippets-quicknav.php:684
+msgid "Codevault"
+msgstr "Codevault"
+
+#: snippets-quicknav.php:689
+msgid "Cloud Search"
+msgstr "Suche in der Cloud"
+
+#: snippets-quicknav.php:693
+msgid "Bundles"
+msgstr "Pakete"
+
+#: snippets-quicknav.php:728
+msgid "Snippets by Tag"
+msgstr "Snippets nach Tag"
+
+#. translators: addition to label in Network Admin (Multisite)
+#: snippets-quicknav.php:765
+msgid "Network"
+msgstr "Netzwerk"
+
+#: snippets-quicknav.php:769
+msgid "Function"
+msgstr "Funktion"
+
+#: snippets-quicknav.php:774
+msgid "Style"
+msgstr "Stil"
+
+#: snippets-quicknav.php:775
+msgid "Script"
+msgstr "Skript"
+
+#: snippets-quicknav.php:783
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+#: snippets-quicknav.php:810
+msgid "Import"
+msgstr "Importieren"
+
+#: snippets-quicknav.php:819
+msgid "Code Snippet"
+msgstr "Code Snippet"
+
+#: snippets-quicknav.php:841
+msgid "Import Snippet"
+msgstr "Snippet-Import"
+
+#: snippets-quicknav.php:870
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: snippets-quicknav.php:876
+msgid "General"
+msgstr "Allgemein"
+
+#: snippets-quicknav.php:877
+msgid "Code Editor"
+msgstr "Code Editor"
+
+#: snippets-quicknav.php:878
+msgid "Debug"
+msgstr "Debug"
+
+#: snippets-quicknav.php:895
+msgid "What's New"
+msgstr "Was ist neu"
+
+#: snippets-quicknav.php:904
+msgid "Account"
+msgstr "Konto"
+
+#: snippets-quicknav.php:919
+msgid "Site Health Info"
+msgstr "Website-Zustand Bericht"
+
+#: snippets-quicknav.php:930
+msgid "Variable Inspector"
+msgstr "Variablen-Inspektor"
+
+#: snippets-quicknav.php:942
+msgid "Debug Log Manager"
+msgstr "Debug-Log Manager"
+
+#: snippets-quicknav.php:975
+msgid "Find Snippets"
+msgstr "Snippets finden"
+
+#: snippets-quicknav.php:983
+msgid "Code Snippets Cloud"
+msgstr "Code Snippets Cloud"
+
+#: snippets-quicknav.php:987
+msgid "WP Snippets Library"
+msgstr "WP Snippets Bibliothek"
+
+#: snippets-quicknav.php:991
+msgid "Codes by Web Squadron"
+msgstr "Codes von Web Squadron"
+
+#: snippets-quicknav.php:995
+msgid "WP SnippetClub Archive"
+msgstr "WP SnippetClub Archiv"
+
+#: snippets-quicknav.php:999
+msgid "Snippets Library by dPlugins"
+msgstr "Snippets-Bibliothek von dPlugins"
+
+#: snippets-quicknav.php:1003
+msgid "WPCodeBin by WPCodeBox"
+msgstr "WPCodeBin von WPCodeBox"
+
+#: snippets-quicknav.php:1007
+msgid "Snippets Library by WPCode"
+msgstr "Snippets-Bibliothek von WPCode"
+
+#: snippets-quicknav.php:1051
+msgid "Links"
+msgstr "Links"
+
+#: snippets-quicknav.php:1059
+msgid "Code Snippets HQ"
+msgstr "Code Snippets Zentrale"
+
+#: snippets-quicknav.php:1063
+msgid "Plugin´s Documentation"
+msgstr "Dokumentation des Plugins"
+
+#: snippets-quicknav.php:1067
+msgid "Emergency Fixes 🔥"
+msgstr "Notbehelfe 🔥"
+
+#: snippets-quicknav.php:1071
+msgid "Learning Ressources"
+msgstr "Lernressourcen"
+
+#: snippets-quicknav.php:1075
+msgid "Code Snippets Blog"
+msgstr "Code Snippets Blog"
+
+#: snippets-quicknav.php:1079
+msgid "CS YouTube Channel"
+msgstr "CS YouTube Kanal"
+
+#: snippets-quicknav.php:1083
+msgid "CS Facbook Group (official)"
+msgstr "CS Facbook Gruppe (offiziell)"
+
+#: snippets-quicknav.php:1087
+msgid "CS Discord Community (official)"
+msgstr "CS Discord Community (offiziell)"
+
+#: snippets-quicknav.php:1091
+msgid "CS Status Page (official)"
+msgstr "CS-Statusseite (offiziell)"
+
+#: snippets-quicknav.php:1095
+msgid "CS GitHub Development (official)"
+msgstr "CS GitHub Entwicklung (offiziell)"
+
+#: snippets-quicknav.php:1123
+msgid "About"
+msgstr "Über"
+
+#: snippets-quicknav.php:1131
+msgid "Author: David Decker"
+msgstr "Autor: David Decker"
+
+#: snippets-quicknav.php:1135
+msgid "Plugin on GitHub"
+msgstr "Plugin auf GitHub"
+
+#: snippets-quicknav.php:1139
+msgid "Buy Me a Coffee"
+msgstr "Kauf mir einen Kaffee"
+
+#. Plugin Name of the plugin/theme
+msgid "Snippets QuickNav"
+msgstr "Snippets QuickNav"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/deckerweb/snippets-quicknav"
+msgstr "https://github.com/deckerweb/snippets-quicknav"
+
+#. Description of the plugin/theme
+msgid ""
+"For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) "
+"to the WordPress Admin Bar (Toolbar). It allows easy access to your Code "
+"Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is "
+"supported. Comes with inspiring links to snippet libraries."
+msgstr ""
+"Für Code Snippets-Fans: Fügt einen Schnellzugriffsnavigator (auch QuickNav "
+"genannt) zur WordPress Admin Bar (Toolbar) hinzu. Das ermöglicht einen "
+"einfachen Zugriff auf deine Code Snippets, aufgelistet nach Aktiv, Inaktiv, "
+"Snippet-Typ oder Tag. Der Safe Mode wird unterstützt. Enthält inspirierende "
+"Links zu Snippet-Bibliotheken."
+
+#. Author of the plugin/theme
+msgid "David Decker – DECKERWEB"
+msgstr "David Decker - DECKERWEB"
+
+#. Author URI of the plugin/theme
+msgid "https://deckerweb.de/"
+msgstr "https://deckerweb.de/"
