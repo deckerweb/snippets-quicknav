@@ -28,7 +28,7 @@ Code Snippets	3.6.8 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-03-19	1.0.0		Initial release 
+2025-03-??	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
 						- Supports Code Snippets Multisite behavior (and settings)
 2025-03-17	0.5.0		Internal test version supporting Code Snippets free & Pro

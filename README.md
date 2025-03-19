@@ -133,7 +133,7 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ## Changelog / Releases
 
-### 🎉 v1.0.0 (2025-03-19)
+### 🎉 v1.0.0 (2025-03-??)
 * Initial release
 * Includes support for _Code Snippets_ **free** AND **Pro** version
 * Includes support for WordPress Multisite installs and respects Code Snippets free behavior (and settings) in there
