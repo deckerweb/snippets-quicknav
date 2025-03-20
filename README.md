@@ -91,8 +91,10 @@ define( 'SNQN_NAME_IN_ADMINBAR', 'Codes' );
 ```
 define( 'SNQN_COUNTER', 'yes' );
 ```
+![With Counter -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/with-counter.png)
 
 ### Default icon of main menu item 
+![Icon Alternatives -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/icon-alternatives.png)
 The "snip" icon – aka the scissor logo icon – is awesome and really historic. However, you can use two other alternatives: 1) The Code Snippets company logo (a bit red-ish / blue-ish) or 2) a more neutral "code" logo from Remix Icon (free and open source licensed!). You can also tweak that via a constant in `wp-config.php` or via Code Snippets plugin:
 ```
 define( 'SNQN_ICON', 'red_blue' );  // Code Snippets company logo
