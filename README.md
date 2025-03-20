@@ -88,10 +88,10 @@ define( 'SNQN_NAME_IN_ADMINBAR', 'Codes' );
 ```
 
 ### Snippets count – addition to main menu item:
+![With Counter -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/with-counter.png)
 ```
 define( 'SNQN_COUNTER', 'yes' );
 ```
-![With Counter -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/with-counter.png)
 
 ### Default icon of main menu item 
 ![Icon Alternatives -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/icon-alternatives.png)
