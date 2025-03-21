@@ -3,6 +3,7 @@
 Plugin Name:  Snippets QuickNav
 Plugin URI:   https://github.com/deckerweb/snippets-quicknav
 Description:  For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
+Project:      Code Snippet: DDW Snippets QuickNav
 Version:      1.0.0
 Author:       David Decker – DECKERWEB
 Author URI:   https://deckerweb.de/
@@ -28,7 +29,7 @@ Code Snippets	3.6.8 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-03-??	1.0.0		Initial release 
+2025-03-21	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
 						- Supports Code Snippets Multisite behavior (and settings)
 2025-03-17	0.5.0		Internal test version supporting Code Snippets free & Pro

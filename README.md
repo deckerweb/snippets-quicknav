@@ -104,23 +104,26 @@ define( 'SNQN_ICON', 'remix' );  // code icon by Remix Icon
 ```
 
 ### Disable code snippets library items
+Removes the "Find Snippets" section
 ```
 define( 'SNQN_DISABLE_LIBRARY', 'yes' );
 ```
 
 ### Disable footer items (Links & About)
+Removes the "Links" & "About" sections
 ```
 define( 'SNQN_DISABLE_FOOTER', 'yes' );
 ```
 
 ### **Enable** "Expert Mode"
 Nothing really fancy, just some additional links for coders:
-- Site Health Info (WP Core)
-- Plugin: Variable Inspector
-- Plugin: Debug Log Manager
+- _Site Health Info_ (WP Core)
+- Plugin: _Variable Inspector_ by Bowo
+- Plugin: _Debug Log Manager_ by Bowo
 ```
 define( 'SNQN_EXPERT_MODE', TRUE );
 ```
+... support for _some_ additional stuff may come in future.
 
 ### **Fair Play:** Enable "free CS free" – to remove some promo stuff ...
 If you want the Pro promotions go away, use the following snippet ... or just purchase the Pro version to support the developers. Thank you in advance! (And thanks to the Code Snippets team for making this awesome tool for us site builders and developers!)
@@ -135,7 +138,7 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ## Changelog / Releases
 
-### 🎉 v1.0.0 (2025-03-??)
+### 🎉 v1.0.0 (2025-03-21)
 * Initial release
 * Includes support for _Code Snippets_ **free** AND **Pro** version
 * Includes support for WordPress Multisite installs and respects Code Snippets free behavior (and settings) in there
