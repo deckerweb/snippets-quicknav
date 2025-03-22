@@ -1165,14 +1165,16 @@ class DDW_Snippets_QuickNav {
 			/** Disable welcome banner */
 			add_filter( 'code_snippets/hide_welcome_banner', '__return_true' );
 			
-			/** Remove Pro Promos */
-			add_action( 'admin_enqueue_scripts', array( $this, 'free_cs_free_admin_inline_styles' ), 50 );
-			
-			/** Remove Go Pro submenu within CS Admin Menu */
-			$settings = get_option( 'code_snippets_settings' );
-			$settings[ 'general' ][ 'hide_upgrade_menu' ] = 1;
-			update_option( 'code_snippets_settings', $settings );
-			
+			/** Remove Pro Promos (but only if in free version) */
+			if ( ! $this->is_pro_version_active() ) {
+				add_action( 'admin_enqueue_scripts', array( $this, 'free_cs_free_admin_inline_styles' ), 50 );
+				
+				/** Remove Go Pro submenu within CS Admin Menu */
+				$settings = get_option( 'code_snippets_settings' );
+				$settings[ 'general' ][ 'hide_upgrade_menu' ] = 1;
+				update_option( 'code_snippets_settings', $settings );
+			}
+
 		}  // end if
 	}
 	
