@@ -44,11 +44,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 1. Below, download the appropriate snippet version
 2. activate or deactivate in your snippets plugin
 
-[**Download .json**](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/ddw-snippets-quicknav.code-snippets.json) version for: _Code Snippets_ (free & Pro), _Advanced Scripts_ (Premium), _Scripts Organizer_ (Premium)
---> just use their elegant script import features
---> in _Scripts Organizer_ use the "Code Snippets Import"
-
-For all other snippet manager plugins just use our plugin's main .php file [`snippets-quicknav.php`](https://github.com/deckerweb/snippets-quicknav/blob/master/snippets-quicknav.php) and use its content as snippet (bevor saving your snippet: please check for your plugin if the opening php tag needs to be removed or not!).
+[**Download .json**](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/ddw-snippets-quicknav.code-snippets.json) version for _Code Snippets_ (free & Pro) just use the "Import" page.
 
 #### Minimum Requirements 
 
