@@ -4,7 +4,7 @@ Plugin Name:  Snippets QuickNav
 Plugin URI:   https://github.com/deckerweb/snippets-quicknav
 Description:  For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
 Project:      Code Snippet: DDW Snippets QuickNav
-Version:      1.0.0
+Version:      1.1.0
 Author:       David Decker – DECKERWEB
 Author URI:   https://deckerweb.de/
 Text Domain:  snippets-quicknav
@@ -29,6 +29,8 @@ Code Snippets	3.6.8 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
+2025-03-23	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
+						Improved: Disable promo stuff only for free version (not globally)
 2025-03-21	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
 						- Supports Code Snippets Multisite behavior (and settings)
@@ -57,11 +59,11 @@ class DDW_Snippets_QuickNav {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'admin_bar_menu',        array( $this, 'add_admin_bar_menu' ), self::DEFAULT_MENU_POSITION );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_bar_styles' ) );  // for Admin
-		add_action( 'wp_enqueue_scripts',    array( $this, 'enqueue_admin_bar_styles' ) );  // for front-end
-		//add_action( 'init',                  array( $this, 'is_expert_mode' ), 20 );
-		add_action( 'init',                  array( $this, 'free_cs_free' ), 20 );
+		add_action( 'admin_bar_menu',              array( $this, 'add_admin_bar_menu' ), self::DEFAULT_MENU_POSITION );
+		add_action( 'admin_enqueue_scripts',       array( $this, 'enqueue_admin_bar_styles' ) );  // for Admin
+		add_action( 'wp_enqueue_scripts',          array( $this, 'enqueue_admin_bar_styles' ) );  // for front-end
+		add_action( 'enqueue_block_editor_assets', array( $this, 'adminbar_block_editor_fullscreen' ) );  // for Block Editor
+		add_action( 'init',                        array( $this, 'free_cs_free' ), 20 );
 	}
 	
 	/**
@@ -87,38 +89,47 @@ class DDW_Snippets_QuickNav {
 		
 		$scheme_colors = array(
 			'fresh' => array(
+				'bg'    => '#1d2327',
 				'base'  => 'rgba(240,246,252,.6)',
 				'hover' => '#72aee6',
 			),
 			'light' => array(
+				'bg'    => '#e5e5e5',
 				'base'  => '#999',
 				'hover' => '#04a4cc',
 			),
 			'modern' => array(
+				'bg'    => '#1e1e1e',
 				'base'  => '#f3f1f1',
 				'hover' => '#33f078',
 			),
 			'blue' => array(
+				'bg'    => '#52accc',
 				'base'  => '#e5f8ff',
 				'hover' => '#fff',
 			),
 			'coffee' => array(
+				'bg'    => '#59524c',
 				'base'  => 'hsl(27.6923076923,7%,95%)',
 				'hover' => '#c7a589',
 			),
 			'ectoplasm' => array(
+				'bg'    => '#523f6d',
 				'base'  => '#ece6f6',
 				'hover' => '#a3b745',
 			),
 			'midnight' => array(
+				'bg'    => '#363b3f',
 				'base'  => 'hsl(206.6666666667,7%,95%)',
 				'hover' => '#e14d43',
 			),
 			'ocean' => array(
+				'bg'    => '#738e96',
 				'base'  => '#f2fcff',
 				'hover' => '#9ebaa0',
 			),
 			'sunrise' => array(
+				'bg'    => '#cf4944',
 				'base'  => 'hsl(2.1582733813,7%,95%)',
 				'hover' => 'rgb(247.3869565217,227.0108695652,211.1130434783)',
 			),
@@ -946,6 +957,8 @@ class DDW_Snippets_QuickNav {
 				'meta'   => array( 'class' => 'has-icon' ),
 			) );
 		}
+		
+		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_nodes' ), 999 );
 	}
 	
 	/**
@@ -1151,6 +1164,74 @@ class DDW_Snippets_QuickNav {
 				'meta'   => array( 'target' => '_blank', 'rel' => 'nofollow noopener noreferrer' ),
 			) );
 		}  // end foreach
+	}
+	
+	/**
+	 * Show the Admin Bar also in Block Editor full screen mode.
+	 */
+	public function adminbar_block_editor_fullscreen() {
+		
+		if ( ! is_admin_bar_showing() ) {
+			return;
+		}
+		
+		/**
+		 * Depending on user color scheme get proper bg color value for admin bar.
+		 */
+		$user_color_scheme = get_user_option( 'admin_color' );
+		$admin_scheme      = $this->get_scheme_colors();
+		
+		$bg_color = $admin_scheme[ $user_color_scheme ][ 'bg' ];
+		
+		$inline_css = sprintf(
+			'
+				@media (min-width: 600px) {
+					body.is-fullscreen-mode .block-editor__container {
+						top: var(--wp-admin--admin-bar--height);
+					}
+				}
+				
+				@media (min-width: 782px) {
+					body.js.is-fullscreen-mode #wpadminbar {
+						display: block;
+					}
+				
+					body.is-fullscreen-mode .block-editor__container {
+						min-height: calc(100vh - var(--wp-admin--admin-bar--height));
+					}
+				
+					body.is-fullscreen-mode .edit-post-layout .editor-post-publish-panel {
+						top: var(--wp-admin--admin-bar--height);
+					}
+					
+					.edit-post-fullscreen-mode-close.components-button {
+						background: %s;
+					}
+					
+					.edit-post-fullscreen-mode-close.components-button::before {
+						box-shadow: none;
+					}
+				}
+				
+				@media (min-width: 783px) {
+					.is-fullscreen-mode .interface-interface-skeleton {
+						top: var(--wp-admin--admin-bar--height);
+					}
+				}
+			',
+			$bg_color
+		);
+		
+		wp_add_inline_style( 'wp-block-editor', $inline_css );
+		
+		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_nodes' ), 999 );
+	}
+	
+	/**
+	 * Remove Admin Bar nodes.
+	 */
+	public function remove_adminbar_nodes( $wp_admin_bar ) {
+		$wp_admin_bar->remove_node( 'wp-logo' );  
 	}
 	
 	/**
