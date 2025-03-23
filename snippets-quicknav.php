@@ -54,6 +54,7 @@ class DDW_Snippets_QuickNav {
 	public static $expert_mode = FALSE;
 	
 	private const DEFAULT_MENU_POSITION	= 999;  // default: 999
+	private const VERSION = '1.1.0';
 
 	/**
 	 * Constructor
@@ -64,6 +65,7 @@ class DDW_Snippets_QuickNav {
 		add_action( 'wp_enqueue_scripts',          array( $this, 'enqueue_admin_bar_styles' ) );  // for front-end
 		add_action( 'enqueue_block_editor_assets', array( $this, 'adminbar_block_editor_fullscreen' ) );  // for Block Editor
 		add_action( 'init',                        array( $this, 'free_cs_free' ), 20 );
+		add_filter( 'debug_information',           array( $this, 'site_health_debug_info' ), 9 );
 	}
 	
 	/**
@@ -1282,13 +1284,102 @@ class DDW_Snippets_QuickNav {
 			#snippet-type-tabs a[data-snippet-type="cloud_search"],
 			#snippet-type-tabs a[data-snippet-type="bundles"] {
 				display: none;
-			}'
+			}
+			'
 		);
 	
 		wp_add_inline_style( 'wp-admin', $inline_css );
 	
 	}  // end function
 	
+	/**
+	 * Add additional plugin related info to the Site Health Debug Info section.
+	 *
+	 * @link https://make.wordpress.org/core/2019/04/25/site-health-check-in-5-2/
+	 *
+	 * @param array $debug_info Array holding all Debug Info items.
+	 * @return array Modified array of Debug Info.
+	 */
+	public function site_health_debug_info( $debug_info ) {
+	
+		$string_undefined = esc_html_x( 'Undefined', 'Site Health Debug info', 'snippets-quicknav' );
+		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'snippets-quicknav' );
+		$string_disabled  = esc_html_x( 'Disabled', 'Site Health Debug info', 'snippets-quicknav' );
+		$string_value     = ' – ' . esc_html_x( 'value', 'Site Health Debug info', 'snippets-quicknav' ) . ': ';
+		$string_version   = defined( 'CODE_SNIPPETS_VERSION' ) ? CODE_SNIPPETS_VERSION : '';
+		$string_free_pro  = sprintf(
+			esc_html__( '%s version', 'snippets-quicknav' ) . ' (' . $string_version . ')',
+			( $this->is_pro_version_active() ) ? esc_html__( 'Pro', 'snippets-quicknav' ) : esc_html__( 'free', 'snippets-quicknav' )
+		);
+	
+		/** Add our Debug info */
+		$debug_info[ 'snippets-quicknav' ] = array(
+			'label'  => esc_html__( 'Snippets QuickNav', 'snippets-quicknav' ) . ' (' . esc_html__( 'Plugin', 'snippets-quicknav' ) . ')',
+			'fields' => array(
+	
+				/** Various values */
+				'snqn_plugin_version' => array(
+					'label' => __( 'Plugin version', 'snippets-quicknav' ),
+					'value' => self::VERSION,
+				),
+				'snqn_install_type' => array(
+					'label' => __( 'WordPress Install Type', 'snippets-quicknav' ),
+					'value' => ( is_multisite() ? esc_html__( 'Multisite install', 'snippets-quicknav' ) : esc_html__( 'Single Site install', 'snippets-quicknav' ) ),
+				),
+	
+				/** Snippets QuickNav constants */
+				'SNQN_VIEW_CAPABILITY' => array(
+					'label' => 'SNQN_VIEW_CAPABILITY',
+					'value' => ( ! defined( 'SNQN_VIEW_CAPABILITY' ) ? $string_undefined : ( SNQN_VIEW_CAPABILITY ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_NAME_IN_ADMINBAR' => array(
+					'label' => 'SNQN_NAME_IN_ADMINBAR',
+					'value' => ( ! defined( 'SNQN_NAME_IN_ADMINBAR' ) ? $string_undefined : ( SNQN_NAME_IN_ADMINBAR ? $string_enabled . $string_value . esc_html( SNQN_NAME_IN_ADMINBAR )  : $string_disabled ) ),
+				),
+				'SNQN_COUNTER' => array(
+					'label' => 'SNQN_COUNTER',
+					'value' => ( ! defined( 'SNQN_COUNTER' ) ? $string_undefined : ( SNQN_COUNTER ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_ICON' => array(
+					'label' => 'SNQN_ICON',
+					'value' => ( ! defined( 'SNQN_ICON' ) ? $string_undefined : ( SNQN_ICON ? $string_enabled . $string_value . sanitize_key( SNQN_ICON ) : $string_disabled ) ),
+				),
+				'SNQN_DISABLE_LIBRARY' => array(
+					'label' => 'SNQN_DISABLE_LIBRARY',
+					'value' => ( ! defined( 'SNQN_DISABLE_LIBRARY' ) ? $string_undefined : ( SNQN_DISABLE_LIBRARY ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_DISABLE_FOOTER' => array(
+					'label' => 'SNQN_DISABLE_FOOTER',
+					'value' => ( ! defined( 'SNQN_DISABLE_FOOTER' ) ? $string_undefined : ( SNQN_DISABLE_FOOTER ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_EXPERT_MODE' => array(
+					'label' => 'SNQN_EXPERT_MODE',
+					'value' => ( ! defined( 'SNQN_EXPERT_MODE' ) ? $string_undefined : ( SNQN_EXPERT_MODE ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_FREE_CS_FREE' => array(
+					'label' => 'SNQN_FREE_CS_FREE',
+					'value' => ( ! defined( 'SNQN_FREE_CS_FREE' ) ? $string_undefined : ( SNQN_FREE_CS_FREE ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_CODE_SNIPPETS_SAFE_MODE' => array(
+					'label' => 'CODE_SNIPPETS_SAFE_MODE',
+					'value' => ( ! defined( 'CODE_SNIPPETS_SAFE_MODE' ) ? $string_undefined : ( CODE_SNIPPETS_SAFE_MODE ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_SCRIPT_DEBUG' => array(
+					'label' => 'SCRIPT_DEBUG',
+					'value' => ( ! defined( 'SCRIPT_DEBUG' ) ? $string_undefined : ( SCRIPT_DEBUG ? $string_enabled : $string_disabled ) ),
+				),
+				'snqn_cs_free_pro' => array(
+					'label' => esc_html( 'Code Snippets Version', 'snippets-quicknav' ),
+					'value' => ( ! defined( 'CODE_SNIPPETS_VERSION' ) ? esc_html( 'Plugin not installed', 'snippets-quicknav' ) : $string_free_pro ),
+				),
+			),  // end array
+		);
+	
+		/** Return modified Debug Info array */
+		return $debug_info;
+	
+	}  // end function
+
 }  // end of class
 
 /** Start instance of Class */
