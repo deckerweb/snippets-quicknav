@@ -1371,7 +1371,7 @@ class DDW_Snippets_QuickNav {
 				),
 				'snqn_cs_free_pro' => array(
 					'label' => esc_html( 'Code Snippets Version', 'snippets-quicknav' ),
-					'value' => ( ! defined( 'CODE_SNIPPETS_VERSION' ) ? esc_html( 'Plugin not installed', 'snippets-quicknav' ) : $string_free_pro ),
+					'value' => ( ! defined( 'CODE_SNIPPETS_VERSION' ) ? esc_html__( 'Plugin not installed', 'snippets-quicknav' ) : $string_free_pro ),
 				),
 			),  // end array
 		);
