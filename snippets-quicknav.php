@@ -1219,7 +1219,7 @@ class DDW_Snippets_QuickNav {
 					}
 				}
 			',
-			$bg_color
+			sanitize_hex_color( $bg_color )
 		);
 		
 		wp_add_inline_style( 'wp-block-editor', $inline_css );
