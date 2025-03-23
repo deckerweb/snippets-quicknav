@@ -1320,11 +1320,11 @@ class DDW_Snippets_QuickNav {
 	
 				/** Various values */
 				'snqn_plugin_version' => array(
-					'label' => __( 'Plugin version', 'snippets-quicknav' ),
+					'label' => esc_html__( 'Plugin version', 'snippets-quicknav' ),
 					'value' => self::VERSION,
 				),
 				'snqn_install_type' => array(
-					'label' => __( 'WordPress Install Type', 'snippets-quicknav' ),
+					'label' => esc_html__( 'WordPress Install Type', 'snippets-quicknav' ),
 					'value' => ( is_multisite() ? esc_html__( 'Multisite install', 'snippets-quicknav' ) : esc_html__( 'Single Site install', 'snippets-quicknav' ) ),
 				),
 	
