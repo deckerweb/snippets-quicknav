@@ -958,7 +958,7 @@ class DDW_Snippets_QuickNav {
 			) );
 		}
 		
-		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_nodes' ), 999 );
+		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_nodes' ), 9999 );
 	}
 	
 	/**
