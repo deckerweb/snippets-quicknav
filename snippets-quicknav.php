@@ -29,7 +29,8 @@ Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-03-23	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
+2025-03-24	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
+						New: Add info to Site Health Debug, useful for our constants for custom tweaking
 						Improved: Disable promo stuff only for free version (not globally)
 2025-03-21	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
