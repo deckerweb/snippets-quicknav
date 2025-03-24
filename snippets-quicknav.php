@@ -29,7 +29,7 @@ Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-03-24	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
+2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
 						New: Add info to Site Health Debug, useful for our constants for custom tweaking
 						Improved: Disable promo stuff only for free version (not globally)
 2025-03-21	1.0.0		Initial release 
@@ -49,14 +49,15 @@ if ( ! class_exists( 'DDW_Snippets_QuickNav' ) ) :
 
 class DDW_Snippets_QuickNav {
 
+	/** Class constants & variables */
+	private const VERSION = '1.1.0';
+	private const DEFAULT_MENU_POSITION	= 999;  // default: 999
+		
 	private static $snippets_active   = 0;
 	private static $snippets_inactive = 0;
 	
 	public static $expert_mode = FALSE;
 	
-	private const DEFAULT_MENU_POSITION	= 999;  // default: 999
-	private const VERSION = '1.1.0';
-
 	/**
 	 * Constructor
 	 */
@@ -559,7 +560,9 @@ class DDW_Snippets_QuickNav {
 		
 		/** Populate the "Active" title string with counter result after foreach iteration */
 		$title_active_node = $wp_admin_bar->get_node( 'snqn-active' );
-		$title_active_node->title = esc_html__( 'Active Snippets', 'snippets-quicknav' ) . ' (' . $count_active . ')';
+		if ( $snippets ) {
+			$title_active_node->title = esc_html__( 'Active Snippets', 'snippets-quicknav' ) . ' (' . $count_active . ')';
+		}
 		$wp_admin_bar->add_node( $title_active_node );
 		
 		/** Set active counter for class */
@@ -602,7 +605,9 @@ class DDW_Snippets_QuickNav {
 		
 		/** Populate the "Inactive" title string with counter result after foreach iteration */
 		$title_inactive_node = $wp_admin_bar->get_node( 'snqn-inactive' );
-		$title_inactive_node->title = esc_html__( 'Inactive Snippets', 'snippets-quicknav' ) . ' (' . $count_inactive . ')';
+		if ( $snippets ) {
+			$title_inactive_node->title = esc_html__( 'Inactive Snippets', 'snippets-quicknav' ) . ' (' . $count_inactive . ')';
+		}
 		$wp_admin_bar->add_node( $title_inactive_node );
 		
 		/** Set inactive counter for class */

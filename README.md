@@ -30,6 +30,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 - [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W81BNTZE)
 - [Buy me a coffee](https://buymeacoffee.com/daveshine)
 - [PayPal donation](https://paypal.me/deckerweb)
+- [Join my **newsletter** for DECKERWEB WordPress Plugins](https://eepurl.com/gbAUUn)
 
 ---
 
@@ -141,12 +142,12 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ## Changelog / Releases
 
-### 🎉 v1.1.0  (2025-03-24)
+### 🎉 v1.1.0 – 2025-03-24
 * New: Show Admin Bar also in Block Editor full screen mode
 * New: Add info to Site Health Debug, useful for our constants for custom tweaking
 * Improved: Disable promo stuff only for free version (not globally)
 
-### 🎉 v1.0.0 (2025-03-21)
+### 🎉 v1.0.0 – 2025-03-21
 * Initial release
 * Includes support for _Code Snippets_ **free** AND **Pro** version
 * Includes support for WordPress Multisite installs and respects Code Snippets free behavior (and settings) in there
