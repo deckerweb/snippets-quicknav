@@ -142,10 +142,11 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ## Changelog / Releases
 
-### 🎉 v1.1.0 – 2025-03-24
+### 🎉 v1.1.0 – 2025-03-25
 * New: Show Admin Bar also in Block Editor full screen mode
 * New: Add info to Site Health Debug, useful for our constants for custom tweaking
 * Improved: Disable promo stuff only for free version (not globally)
+* Improved: Additional checks if Code Snippets plugin is not active
 
 ### 🎉 v1.0.0 – 2025-03-21
 * Initial release
