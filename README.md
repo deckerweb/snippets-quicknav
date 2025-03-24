@@ -79,7 +79,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 ## Custom Tweaks via Constants
 
 ### Default capability (aka permission)
-The intended usage of this plugin is for Administrator users only. Therefore the default capability to see the new Admin Bar node is set to `activate_plugins`. You can change this via the constant `OQN_VIEW_CAPABILITY` – define that via `wp-config.php` or via Code Snippet plugin:
+The intended usage of this plugin is for Administrator users only. Therefore the default capability to see the new Admin Bar node is set to `activate_plugins`. You can change this via the constant `SNQN_VIEW_CAPABILITY` – define that via `wp-config.php` or via Code Snippet plugin:
 ```
 define( 'SNQN_VIEW_CAPABILITY', 'activate_plugins' );
 ```

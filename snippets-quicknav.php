@@ -283,7 +283,7 @@ class DDW_Snippets_QuickNav {
 	}
 
 	/**
-	 * Check for active SCRIPT_DEBUG constant, and also filter (helper function)
+	 * Check for active SCRIPT_DEBUG constant. (helper function)
 	 *
 	 * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/#script_debug
 	 */
@@ -293,7 +293,7 @@ class DDW_Snippets_QuickNav {
 	}
 	
 	/**
-	 * Check for active Safe Mode constant, and also filter (helper function)
+	 * Check for active Safe Mode constant, and also filter. (helper function)
 	 *
 	 * @link https://codesnippets.pro/docs/emergency-fixes/
 	 * @link https://github.com/codesnippetspro/safe-mode
@@ -308,7 +308,7 @@ class DDW_Snippets_QuickNav {
 	}
 	
 	/**
-	 * Check for active Code Snippets Pro Version (licensed) (helper function)
+	 * Check for active Code Snippets Pro Version (licensed). (helper function)
 	 *
 	 * @TODO Make more future proof ...!
 	 */
@@ -320,7 +320,7 @@ class DDW_Snippets_QuickNav {
 	}
 	
 	/**
-	 * Check for active Cloud Connection (CS Pro) (helper function)
+	 * Check for active Cloud Connection (CS Pro). (helper function)
 	 *
 	 * @TODO Make more future proof ...!
 	 */
@@ -427,9 +427,7 @@ class DDW_Snippets_QuickNav {
 			$title_html = $remix_icon . '<span class="ab-label">' . $snqn_name . '</span>' . $safemode;
 		}
 		
-		/**
-		 * Add the parent menu item with an icon (main node)
-		 */
+		/** Add the parent menu item with an icon (main node) */
 		$wp_admin_bar->add_node( array(
 			'id'    => 'ddw-snippets-quicknav',
 			'title' => $title_html,
@@ -1378,8 +1376,7 @@ class DDW_Snippets_QuickNav {
 	
 		/** Return modified Debug Info array */
 		return $debug_info;
-	
-	}  // end function
+	}
 
 }  // end of class
 
