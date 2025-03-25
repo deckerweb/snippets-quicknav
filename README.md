@@ -144,9 +144,13 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ### 🎉 v1.1.0 – 2025-03-25
 * New: Show Admin Bar also in Block Editor full screen mode
+* New: Support for _DevKit Pro_ plugin by DPlugins
+* New: Support for _System Dashboard_ plugin by Bowo
 * New: Add info to Site Health Debug, useful for our constants for custom tweaking
 * Improved: Disable promo stuff only for free version (not globally)
-* Improved: Additional checks if Code Snippets plugin is not active
+* Improved: Additional checks if _Code Snippets_ plugin is not active
+* Plugin: Add meta links on WP Plugins page
+* Update: `.pot` file, plus packaged German translations
 
 ### 🎉 v1.0.0 – 2025-03-21
 * Initial release

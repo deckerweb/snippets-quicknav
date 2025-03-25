@@ -31,6 +31,7 @@ Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
 2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
 						New: Add info to Site Health Debug, useful for our constants for custom tweaking
+						New: Support for plugins "Systen Dashboard" and "DevKit Pro"
 						Improved: Disable promo stuff only for free version (not globally)
 2025-03-21	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
@@ -930,6 +931,18 @@ class DDW_Snippets_QuickNav {
 		
 		if ( ! $this->is_expert_mode() ) return $wp_admin_bar;
 		
+		$icon_dash = '<span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 13C20 15.2091 19.1046 17.2091 17.6569 18.6569L19.0711 20.0711C20.8807 18.2614 22 15.7614 22 13 22 7.47715 17.5228 3 12 3 6.47715 3 2 7.47715 2 13 2 15.7614 3.11929 18.2614 4.92893 20.0711L6.34315 18.6569C4.89543 17.2091 4 15.2091 4 13 4 8.58172 7.58172 5 12 5 16.4183 5 20 8.58172 20 13ZM15.293 8.29297 10.793 12.793 12.2072 14.2072 16.7072 9.70718 15.293 8.29297Z"></path></svg></span> ';
+		
+		if ( defined( 'SYSTEM_DASHBOARD_VERSION' ) ) {
+			$wp_admin_bar->add_node( array(
+				'id'     => 'snqn-system-dashboard',
+				'title'  => $icon_dash . esc_html__( 'System Dashboard', 'snippets-quicknav' ),
+				'href'   => esc_url( admin_url( 'index.php?page=system-dashboard' ) ),
+				'parent' => 'snqn-group-settings',
+				'meta'   => array( 'class' => 'has-icon' ),
+			) );
+		}
+		
 		$icon_info = '<span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z"></path></svg></span> ';
 		
 		$wp_admin_bar->add_node( array(
@@ -965,6 +978,52 @@ class DDW_Snippets_QuickNav {
 				'href'   => esc_url( admin_url( 'tools.php?page=debug-log-manager' ) ),
 				'parent' => 'snqn-group-settings',
 				'meta'   => array( 'class' => 'has-icon' ),
+			) );
+		}
+		
+		$icon_codebox = '<span class="icon-svg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM4 5V19H20V5H4ZM20 12L16.4645 15.5355L15.0503 14.1213L17.1716 12L15.0503 9.87868L16.4645 8.46447L20 12ZM6.82843 12L8.94975 14.1213L7.53553 15.5355L4 12L7.53553 8.46447L8.94975 9.87868L6.82843 12ZM11.2443 17H9.11597L12.7557 7H14.884L11.2443 17Z"></path></svg></span> ';
+		
+		if ( defined( 'DPDEVKIT_URL' ) && current_user_can( 'manage_options' ) ) {
+			$wp_admin_bar->add_node( array(
+				'id'     => 'snqn-devkitpro',
+				'title'  => $icon_codebox . 'DevKit Pro',
+				'href'   => esc_url( admin_url( 'admin.php?page=devkit' ) ),
+				'parent' => 'snqn-group-settings',
+				'meta'   => array( 'class' => 'has-icon' ),
+			) );
+			
+			$wp_admin_bar->add_node( array(
+				'id'     => 'snqn-devkitpro-filemanager',
+				'title'  => esc_html__( 'File Manager', 'snippets-quicknav' ),
+				'href'   => esc_url( admin_url( 'admin.php?page=devkit&tab=file-manager' ) ),
+				'parent' => 'snqn-devkitpro',
+				'meta'   => array( 'target' => '_blank' ),
+			) );
+			
+			$wp_admin_bar->add_node( array(
+				'id'     => 'snqn-devkitpro-errorlogs',
+				'title'  => esc_html__( 'Error Logs', 'snippets-quicknav' ),
+				'href'   => esc_url( admin_url( 'admin.php?page=devkit&tab=error-log' ) ),
+				'parent' => 'snqn-devkitpro',
+				'meta'   => array( 'target' => '_blank' ),
+			) );
+			
+			if ( 'yes' === get_option( 'dpdevkit_adminer' ) ) {
+				$wp_admin_bar->add_node( array(
+					'id'     => 'snqn-devkitpro-adminer',
+					'title'  => esc_html__( 'Adminer: Manage DB', 'snippets-quicknav' ),
+					'href'   => esc_url( site_url() . '/devkit-adminer' ),
+					'parent' => 'snqn-devkitpro',
+					'meta'   => array( 'target' => '_blank' ),
+				) );
+			}
+			
+			$wp_admin_bar->add_node( array(
+				'id'     => 'snqn-devkitpro-tools',
+				'title'  => esc_html__( 'Tools', 'snippets-quicknav' ),
+				'href'   => esc_url( admin_url( 'admin.php?page=devkit&tab=tools' ) ),
+				'parent' => 'snqn-devkitpro',
+				'meta'   => array( 'target' => '_blank' ),
 			) );
 		}
 		
@@ -1389,3 +1448,48 @@ class DDW_Snippets_QuickNav {
 new DDW_Snippets_QuickNav();
 	
 endif;
+
+
+if ( ! function_exists( 'ddw_snqn_pluginrow_meta' ) ) :
+	
+add_filter( 'plugin_row_meta', 'ddw_snqn_pluginrow_meta', 10, 2 );
+/**
+ * Add plugin related links to plugin page.
+ *
+ * @param array  $ddwp_meta (Default) Array of plugin meta links.
+ * @param string $ddwp_file File location of plugin.
+ * @return array $ddwp_meta (Modified) Array of plugin links/ meta.
+ */
+function ddw_snqn_pluginrow_meta( $ddwp_meta, $ddwp_file ) {
+ 
+	 if ( ! current_user_can( 'install_plugins' ) ) return $ddwp_meta;
+ 
+	 /** Get current user */
+	 $user = wp_get_current_user();
+	 
+	 /** Build Newsletter URL */
+	 $url_nl = sprintf(
+		 'https://deckerweb.us2.list-manage.com/subscribe?u=e09bef034abf80704e5ff9809&amp;id=380976af88&amp;MERGE0=%1$s&amp;MERGE1=%2$s',
+		 esc_attr( $user->user_email ),
+		 esc_attr( $user->user_firstname )
+	 );
+	 
+	 /** List additional links only for this plugin */
+	 if ( $ddwp_file === trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . basename( __FILE__ ) ) {
+		 $ddwp_meta[] = sprintf(
+			 '<a class="button button-inline" href="https://ko-fi.com/deckerweb" target="_blank" rel="nofollow noopener noreferrer" title="%1$s">❤ <b>%1$s</b></a>',
+			 esc_html_x( 'Donate', 'Plugins page listing', 'advanced-scripts-quicknav' )
+		 );
+ 
+		 $ddwp_meta[] = sprintf(
+			 '<a class="button-primary" href="%1$s" target="_blank" rel="nofollow noopener noreferrer" title="%2$s">⚡ <b>%2$s</b></a>',
+			 $url_nl,
+			 esc_html_x( 'Join our Newsletter', 'Plugins page listing', 'advanced-scripts-quicknav' )
+		 );
+	 }  // end if
+ 
+	 return apply_filters( 'ddw/admin_extras/pluginrow_meta', $ddwp_meta );
+ 
+ }  // end function
+ 
+ endif;
