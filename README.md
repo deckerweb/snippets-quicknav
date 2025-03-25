@@ -68,11 +68,11 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 5. Support for Code Snippets own "Safe Mode" (constant & filter function) – extra notice in Admin Bar
 6. Support for WordPress own "Script Debug" constant - extra notice in Admin Bar
 7. Plugin supports Multisite behavior (and settings) of Code Snippets plugin itself and adapts the Toolbar links by context, if needed
-8. Third-party plugin support/integration (currently: _Multisite Toolbar Additions_ by myself 😉 / _Variable Inspector_ by Bowo / _Debug Log Manager_ by Bowo)
+8. Third-party plugin support/integration (currently: _Multisite Toolbar Additions_ by myself 😉 / _DevKitPro_ by DPlugins / _System Dashboard_ by Bowo / _Variable Inspector_ by Bowo / _Debug Log Manager_ by Bowo)
 9. Plugin installation mode:
 	- a) As regular plugin (also supports Multisite network-wide activation)
 	- b) As code snippet - directly in _Code Snippets_ itself! 👏
-10. Custom tweaks via constants: enable or disable various additional features or tweaks – just as simple code snippets, see below --- this keeps the plugin/snippet simple and lightweight
+10. Custom tweaks via constants: enable or disable various additional features or tweaks – just as simple code snippets, see below --- this keeps the plugin/snippet simple and lightweight (you can check the config in your WP install via: _Tools > Site Health > Info_ – there look for the row: _Snippets QuickNav (Plugin)_)
 11. Show the Admin Bar also in Block Editor full screen mode.
 
 ---
@@ -122,12 +122,14 @@ define( 'SNQN_DISABLE_FOOTER', 'yes' );
 ### **Enable** "Expert Mode"
 Nothing really fancy, just some additional links for coders:
 - _Site Health Info_ (WP Core)
+- Plugin: _DevKit Pro_ by DPlugins
+- Plugin: _System Dashboard_ by Bowo
 - Plugin: _Variable Inspector_ by Bowo
 - Plugin: _Debug Log Manager_ by Bowo
 ```
 define( 'SNQN_EXPERT_MODE', TRUE );
 ```
-... support for _some_ additional stuff may come in future.
+Note: Support for _some_ additional stuff in that mode may come in future.
 
 ### **Fair Play:** Enable "free CS free" – to remove some promo stuff ...
 If you want the Pro promotions go away, use the following snippet ... or just purchase the Pro version to support the developers. Thank you in advance! (And thanks to the Code Snippets team for making this awesome tool for us site builders and developers!)
