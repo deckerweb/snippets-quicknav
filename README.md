@@ -180,6 +180,8 @@ _Most of all:_ Blessed (snippet) coding, and have fun building great sites!!! �
 
 ---
 
+Official "scissor" and _Code Snippets_ plugin/company logo icons: © Code Snippets Pro
+
 Icon used in promo graphics: [© Remix Icon](https://remixicon.com/)
 
 Readme & Plugin Copyright © 2025 David Decker – DECKERWEB.de
