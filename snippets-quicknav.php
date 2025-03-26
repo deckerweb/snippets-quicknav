@@ -42,9 +42,7 @@ Date		Version		Description
 */
 
 /** Prevent direct access */
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;  // Exit if accessed directly.
-}
+if ( ! defined( 'ABSPATH' ) ) exit;  // Exit if accessed directly.
 
 if ( ! class_exists( 'DDW_Snippets_QuickNav' ) ) :
 
@@ -1240,9 +1238,7 @@ class DDW_Snippets_QuickNav {
 	 */
 	public function adminbar_block_editor_fullscreen() {
 		
-		if ( ! is_admin_bar_showing() ) {
-			return;
-		}
+		if ( ! is_admin_bar_showing() ) return;
 		
 		/**
 		 * Depending on user color scheme get proper bg color value for admin bar.

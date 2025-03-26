@@ -47,8 +47,9 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 
 [**Download .json**](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/ddw-snippets-quicknav.code-snippets.json) version for _Code Snippets_ (free & Pro) just use the "Import" page.
 
-#### Minimum Requirements 
+--> Please decide for one of both alternatives!
 
+#### Minimum Requirements 
 * WordPress version 6.7 or higher
 * PHP version 7.4 or higher (better 8.3+)
 * MySQL version 8.0 or higher / OR MariaDB 10.1 or higher
