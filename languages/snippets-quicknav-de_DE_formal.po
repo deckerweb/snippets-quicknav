@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Snippets QuickNav\n"
-"POT-Creation-Date: 2025-03-25 15:07+0100\n"
-"PO-Revision-Date: 2025-03-25 15:08+0100\n"
+"POT-Creation-Date: 2025-03-27 11:43+0100\n"
+"PO-Revision-Date: 2025-03-27 11:43+0100\n"
 "Last-Translator: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
 "Language-Team: David Decker DECKERWEB.de <David Decker DECKERWEB.de>\n"
 "Language: de_DE@formal\n"
@@ -20,327 +20,327 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: snippets-quicknav.php:400
+#: snippets-quicknav.php:408
 msgid "Snippets"
 msgstr "Snippets"
 
-#: snippets-quicknav.php:467
+#: snippets-quicknav.php:475
 msgid "SAFE MODE is active 🔥"
 msgstr "SAFE MODE ist aktiv 🔥"
 
-#: snippets-quicknav.php:475
+#: snippets-quicknav.php:483
 msgid "Code Snippets Safe Mode active 🔥"
 msgstr "Code Snippets Abgesicherter Modus aktiv 🔥"
 
-#: snippets-quicknav.php:486 snippets-quicknav.php:494
+#: snippets-quicknav.php:494 snippets-quicknav.php:502
 msgid "SCRIPT_DEBUG is on ⚠"
 msgstr "SCRIPT_DEBUG ist an ⚠"
 
-#: snippets-quicknav.php:565 snippets-quicknav.php:649
+#: snippets-quicknav.php:573 snippets-quicknav.php:657
 msgid "Active Snippets"
 msgstr "Aktive Snippets"
 
-#: snippets-quicknav.php:610 snippets-quicknav.php:650
+#: snippets-quicknav.php:618 snippets-quicknav.php:658
 msgid "Inactive Snippets"
 msgstr "Inaktive Snippets"
 
-#: snippets-quicknav.php:639
+#: snippets-quicknav.php:647
 msgid "Snippets by Status"
 msgstr "Snippets nach Status"
 
-#: snippets-quicknav.php:648
+#: snippets-quicknav.php:656
 msgid "All Snippets"
 msgstr "Alle Snippets"
 
-#: snippets-quicknav.php:651
+#: snippets-quicknav.php:659
 msgid "Recently Active Snippets"
 msgstr "Kürzlich aktive Snippets"
 
-#: snippets-quicknav.php:674
+#: snippets-quicknav.php:682
 msgid "Snippets by Type"
 msgstr "Snippets nach Typ"
 
-#: snippets-quicknav.php:681
+#: snippets-quicknav.php:689
 msgid "Functions"
 msgstr "Funktionen"
 
-#: snippets-quicknav.php:685 snippets-quicknav.php:789
+#: snippets-quicknav.php:693 snippets-quicknav.php:797
 msgid "Content"
 msgstr "Inhalt"
 
-#: snippets-quicknav.php:692
+#: snippets-quicknav.php:700
 msgid "Styles"
 msgstr "Stile"
 
-#: snippets-quicknav.php:697
+#: snippets-quicknav.php:705
 msgid "Scripts"
 msgstr "Skripte"
 
-#: snippets-quicknav.php:703
+#: snippets-quicknav.php:711
 msgid "Codevault"
 msgstr "Codevault"
 
-#: snippets-quicknav.php:708
+#: snippets-quicknav.php:716
 msgid "Cloud Search"
 msgstr "Suche in der Cloud"
 
-#: snippets-quicknav.php:712
+#: snippets-quicknav.php:720
 msgid "Bundles"
 msgstr "Pakete"
 
-#: snippets-quicknav.php:747
+#: snippets-quicknav.php:755
 msgid "Snippets by Tag"
 msgstr "Snippets nach Tag"
 
 #. translators: addition to label in Network Admin (Multisite)
-#: snippets-quicknav.php:784
+#: snippets-quicknav.php:792
 msgid "Network"
 msgstr "Netzwerk"
 
-#: snippets-quicknav.php:788
+#: snippets-quicknav.php:796
 msgid "Function"
 msgstr "Funktion"
 
-#: snippets-quicknav.php:793
+#: snippets-quicknav.php:801
 msgid "Style"
 msgstr "Stil"
 
-#: snippets-quicknav.php:794
+#: snippets-quicknav.php:802
 msgid "Script"
 msgstr "Skript"
 
-#: snippets-quicknav.php:802
+#: snippets-quicknav.php:810
 msgid "Add New"
 msgstr "Neu hinzufügen"
 
-#: snippets-quicknav.php:829
+#: snippets-quicknav.php:837
 msgid "Import"
 msgstr "Importieren"
 
-#: snippets-quicknav.php:838
+#: snippets-quicknav.php:846
 msgid "Code Snippet"
 msgstr "Code Snippet"
 
-#: snippets-quicknav.php:860
+#: snippets-quicknav.php:868
 msgid "Import Snippet"
 msgstr "Snippet-Import"
 
-#: snippets-quicknav.php:889
+#: snippets-quicknav.php:897
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: snippets-quicknav.php:895
+#: snippets-quicknav.php:903
 msgid "General"
 msgstr "Allgemein"
 
-#: snippets-quicknav.php:896
+#: snippets-quicknav.php:904
 msgid "Code Editor"
 msgstr "Code Editor"
 
-#: snippets-quicknav.php:897
+#: snippets-quicknav.php:905
 msgid "Debug"
 msgstr "Debug"
 
-#: snippets-quicknav.php:914
+#: snippets-quicknav.php:922
 msgid "What's New"
 msgstr "Was ist neu"
 
-#: snippets-quicknav.php:923
+#: snippets-quicknav.php:931
 msgid "Account"
 msgstr "Konto"
 
-#: snippets-quicknav.php:939
+#: snippets-quicknav.php:947
 msgid "System Dashboard"
 msgstr "System-Dashboard"
 
-#: snippets-quicknav.php:950
+#: snippets-quicknav.php:958
 msgid "Site Health Info"
 msgstr "Website-Zustand Bericht"
 
-#: snippets-quicknav.php:961
+#: snippets-quicknav.php:969
 msgid "Variable Inspector"
 msgstr "Variablen-Inspektor"
 
-#: snippets-quicknav.php:977
+#: snippets-quicknav.php:985
 msgid "Debug Log Manager"
 msgstr "Debug-Log Manager"
 
-#: snippets-quicknav.php:997
+#: snippets-quicknav.php:1005
 msgid "File Manager"
 msgstr "Dateimanager"
 
-#: snippets-quicknav.php:1005
+#: snippets-quicknav.php:1013
 msgid "Error Logs"
 msgstr "Fehlerprotokolle"
 
-#: snippets-quicknav.php:1014
+#: snippets-quicknav.php:1022
 msgid "Adminer: Manage DB"
 msgstr "Verwalter: DB verwalten"
 
-#: snippets-quicknav.php:1023
+#: snippets-quicknav.php:1031
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: snippets-quicknav.php:1058
+#: snippets-quicknav.php:1066
 msgid "Find Snippets"
 msgstr "Snippets finden"
 
-#: snippets-quicknav.php:1066
+#: snippets-quicknav.php:1074
 msgid "Code Snippets Cloud"
 msgstr "Code Snippets Cloud"
 
-#: snippets-quicknav.php:1070
+#: snippets-quicknav.php:1078
 msgid "WP Snippets Library"
 msgstr "WP Snippets Bibliothek"
 
-#: snippets-quicknav.php:1074
+#: snippets-quicknav.php:1082
 msgid "Codes by Web Squadron"
 msgstr "Codes von Web Squadron"
 
-#: snippets-quicknav.php:1078
+#: snippets-quicknav.php:1086
 msgid "WP SnippetClub Archive"
 msgstr "WP SnippetClub Archiv"
 
-#: snippets-quicknav.php:1082
+#: snippets-quicknav.php:1090
 msgid "Snippets Library by dPlugins"
 msgstr "Snippets-Bibliothek von dPlugins"
 
-#: snippets-quicknav.php:1086
+#: snippets-quicknav.php:1094
 msgid "WPCodeBin by WPCodeBox"
 msgstr "WPCodeBin von WPCodeBox"
 
-#: snippets-quicknav.php:1090
+#: snippets-quicknav.php:1098
 msgid "Snippets Library by WPCode"
 msgstr "Snippets-Bibliothek von WPCode"
 
-#: snippets-quicknav.php:1134
+#: snippets-quicknav.php:1142
 msgid "Links"
 msgstr "Links"
 
-#: snippets-quicknav.php:1142
+#: snippets-quicknav.php:1150
 msgid "Code Snippets HQ"
 msgstr "Code Snippets Zentrale"
 
-#: snippets-quicknav.php:1146
+#: snippets-quicknav.php:1154
 msgid "Plugin´s Documentation"
 msgstr "Dokumentation des Plugins"
 
-#: snippets-quicknav.php:1150
+#: snippets-quicknav.php:1158
 msgid "Emergency Fixes 🔥"
 msgstr "Notbehelfe 🔥"
 
-#: snippets-quicknav.php:1154
+#: snippets-quicknav.php:1162
 msgid "Learning Ressources"
 msgstr "Lernressourcen"
 
-#: snippets-quicknav.php:1158
+#: snippets-quicknav.php:1166
 msgid "Code Snippets Blog"
 msgstr "Code Snippets Blog"
 
-#: snippets-quicknav.php:1162
+#: snippets-quicknav.php:1170
 msgid "CS YouTube Channel"
 msgstr "CS YouTube Kanal"
 
-#: snippets-quicknav.php:1166
+#: snippets-quicknav.php:1174
 msgid "CS Facbook Group (official)"
 msgstr "CS Facbook Gruppe (offiziell)"
 
-#: snippets-quicknav.php:1170
+#: snippets-quicknav.php:1178
 msgid "CS Discord Community (official)"
 msgstr "CS Discord Community (offiziell)"
 
-#: snippets-quicknav.php:1174
+#: snippets-quicknav.php:1182
 msgid "CS Status Page (official)"
 msgstr "CS-Statusseite (offiziell)"
 
-#: snippets-quicknav.php:1178
+#: snippets-quicknav.php:1186
 msgid "CS GitHub Development (official)"
 msgstr "CS GitHub Entwicklung (offiziell)"
 
-#: snippets-quicknav.php:1206
+#: snippets-quicknav.php:1214
 msgid "About"
 msgstr "Über"
 
-#: snippets-quicknav.php:1214
+#: snippets-quicknav.php:1222
 msgid "Author: David Decker"
 msgstr "Autor: David Decker"
 
-#: snippets-quicknav.php:1218
+#: snippets-quicknav.php:1226
 msgid "Plugin on GitHub"
 msgstr "Plugin auf GitHub"
 
-#: snippets-quicknav.php:1222
+#: snippets-quicknav.php:1230
 msgid "Buy Me a Coffee"
 msgstr "Kauf mir einen Kaffee"
 
-#: snippets-quicknav.php:1368
+#: snippets-quicknav.php:1374
 msgctxt "Site Health Debug info"
 msgid "Undefined"
 msgstr "Nicht definiert"
 
-#: snippets-quicknav.php:1369
+#: snippets-quicknav.php:1375
 msgctxt "Site Health Debug info"
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: snippets-quicknav.php:1370
+#: snippets-quicknav.php:1376
 msgctxt "Site Health Debug info"
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: snippets-quicknav.php:1371
+#: snippets-quicknav.php:1377
 msgctxt "Site Health Debug info"
 msgid "value"
 msgstr "Wert"
 
-#: snippets-quicknav.php:1374
+#: snippets-quicknav.php:1380
 #, php-format
 msgid "%s version"
 msgstr "%s Version"
 
-#: snippets-quicknav.php:1375
+#: snippets-quicknav.php:1381
 msgid "Pro"
 msgstr "Pro"
 
-#: snippets-quicknav.php:1375
+#: snippets-quicknav.php:1381
 msgid "free"
 msgstr "Freie"
 
 #. Plugin Name of the plugin/theme
-#: snippets-quicknav.php:1380
+#: snippets-quicknav.php:1386
 msgid "Snippets QuickNav"
 msgstr "Snippets QuickNav"
 
-#: snippets-quicknav.php:1380
+#: snippets-quicknav.php:1386
 msgid "Plugin"
 msgstr "Plugin"
 
-#: snippets-quicknav.php:1385
+#: snippets-quicknav.php:1391
 msgid "Plugin version"
 msgstr "Pluginversion"
 
-#: snippets-quicknav.php:1389
+#: snippets-quicknav.php:1395
 msgid "WordPress Install Type"
 msgstr "WordPress Installationstyp"
 
-#: snippets-quicknav.php:1390
+#: snippets-quicknav.php:1396
 msgid "Multisite install"
 msgstr "Multisite-Installation"
 
-#: snippets-quicknav.php:1390
+#: snippets-quicknav.php:1396
 msgid "Single Site install"
 msgstr "Single-Site-Installation"
 
-#: snippets-quicknav.php:1436
+#: snippets-quicknav.php:1446
 msgid "Plugin not installed"
 msgstr "Plugin nicht installiert"
 
-#: snippets-quicknav.php:1481
+#: snippets-quicknav.php:1491
 msgctxt "Plugins page listing"
 msgid "Donate"
 msgstr "Spenden"
 
-#: snippets-quicknav.php:1487
+#: snippets-quicknav.php:1497
 msgctxt "Plugins page listing"
 msgid "Join our Newsletter"
 msgstr "Jetzt Newsletter"
