@@ -4,12 +4,12 @@ Plugin Name:  Snippets QuickNav
 Plugin URI:   https://github.com/deckerweb/snippets-quicknav
 Description:  For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
 Project:      Code Snippet: DDW Snippets QuickNav
-Version:      1.1.0
+Version:      1.2.0
 Author:       David Decker – DECKERWEB
 Author URI:   https://deckerweb.de/
 Text Domain:  snippets-quicknav
 Domain Path:  /languages/
-License:      GPL v2 or later
+License:      GPL-2.0-or-later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:  6.7
 Requires PHP: 7.4
@@ -29,6 +29,8 @@ Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
+2025-03-26	1.2.0		New: Optionally only enable for defined user IDs
+						Fix: PHP warning on frontend
 2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
 						New: Add info to Site Health Debug, useful for our constants for custom tweaking
 						New: Support for plugins "Systen Dashboard" and "DevKit Pro"
@@ -49,7 +51,7 @@ if ( ! class_exists( 'DDW_Snippets_QuickNav' ) ) :
 class DDW_Snippets_QuickNav {
 
 	/** Class constants & variables */
-	private const VERSION = '1.1.0';
+	private const VERSION = '1.2.0';
 	private const DEFAULT_MENU_POSITION	= 999;  // default: 999
 		
 	private static $snippets_active   = 0;
@@ -154,6 +156,7 @@ class DDW_Snippets_QuickNav {
 		 * Depending on user color scheme get proper base and hover color values for the main item (svg) icon.
 		 */
 		$user_color_scheme = get_user_option( 'admin_color' );
+		$user_color_scheme = is_network_admin() ? $user_color_scheme : 'fresh';  // b/c in frontend there is no 'admin_color'
 		$admin_scheme      = $this->get_scheme_colors();
 		
 		$base_color  = $admin_scheme[ $user_color_scheme ][ 'base' ];
@@ -379,6 +382,13 @@ class DDW_Snippets_QuickNav {
 	 * @param WP_Admin_Bar $wp_admin_bar The WP_Admin_Bar instance.
 	 */
 	public function add_admin_bar_menu( $wp_admin_bar ) {
+		
+		$enabled_users = defined( 'SNQN_ENABLED_USERS' ) ? (array) SNQN_ENABLED_USERS : [];
+		
+		/** Optional: let only defined user IDs access the plugin */
+		if ( defined( 'SNQN_ENABLED_USERS' ) && ! in_array( get_current_user_id(), $enabled_users ) ) {
+			return;
+		}
 		
 		/** Don't do anything if Code Snippets plugin is NOT active */
 		if ( ! defined( 'CODE_SNIPPETS_VERSION' ) ) {
@@ -1390,6 +1400,10 @@ class DDW_Snippets_QuickNav {
 				'SNQN_VIEW_CAPABILITY' => array(
 					'label' => 'SNQN_VIEW_CAPABILITY',
 					'value' => ( ! defined( 'SNQN_VIEW_CAPABILITY' ) ? $string_undefined : ( SNQN_VIEW_CAPABILITY ? $string_enabled : $string_disabled ) ),
+				),
+				'SNQN_ENABLED_USERS' => array(
+					'label' => 'SNQN_ENABLED_USERS',
+					'value' => ( ! defined( 'SNQN_ENABLED_USERS' ) ? $string_undefined : ( SNQN_ENABLED_USERS ? $string_enabled . $string_value . implode( ', ', SNQN_ENABLED_USERS ) : $string_disabled ) ),
 				),
 				'SNQN_NAME_IN_ADMINBAR' => array(
 					'label' => 'SNQN_NAME_IN_ADMINBAR',

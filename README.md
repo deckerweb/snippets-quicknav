@@ -86,6 +86,19 @@ The intended usage of this plugin is for Administrator users only. Therefore the
 define( 'SNQN_VIEW_CAPABILITY', 'activate_plugins' );
 ```
 
+### Restrict to defined user IDs only (since v1.2.0)
+You can define an array of user IDs (can also be only _one_ ID) and that way restrict showing the Snippets Admin Bar item only for those users. Define that via `wp-config.php` or via Code Snippet plugin:
+```
+define( 'SNQN_ENABLED_USERS', [ 1, 500, 867 ] );
+```
+This would enable only for the users with the IDs 1, 500 and 867. Note the square brackets, and no single quotes, just the ID numbers.
+
+For example you are one of many admin users (role `administrator`) but _only you_ want to show it _for yourself_. Given you have user ID 1:
+```
+define( 'SNQN_ENABLED_USERS', [ 1 ] );
+```
+That way only you can see it, the other admins can't!
+
 ### Name of main menu item
 The default is just "Snippets" – catchy and short. However, if you don't enjoy "Snippets" you can tweak that also via the constant `SNQN_NAME_IN_ADMINBAR` – define that also via `wp-config.php` or via Code Snippet plugin:
 ```
