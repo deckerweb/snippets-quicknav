@@ -1,5 +1,5 @@
 # Snippets QuickNav Documentation
 
-### [Custom Tweaks (via Constants)](/custom-tweaks.md)
+### [Custom Tweaks (via Constants)](/docs/custom-tweaks.md)
 
-### [Plugins versus Code Snippets – What is Best?](/plugins-vs-code-snippets.md)
+### [Plugins versus Code Snippets – What is Best?](/docs/plugins-vs-code-snippets.md)
