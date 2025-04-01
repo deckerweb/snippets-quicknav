@@ -91,7 +91,7 @@ You can define an array of user IDs (can also be only _one_ ID) and that way res
 ```
 define( 'SNQN_ENABLED_USERS', [ 1, 500, 867 ] );
 ```
-This would enable only for the users with the IDs 1, 500 and 867. Note the square brackets, and no single quotes, just the ID numbers.
+This would enable only for the users with the IDs 1, 500 and 867. Note the square brackets around, and no single quotes, just the ID numbers.
 
 For example you are one of many admin users (role `administrator`) but _only you_ want to show it _for yourself_. Given you have user ID 1:
 ```
@@ -158,6 +158,13 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 ## Changelog / Releases
 
+### 🎉 v1.2.0 – 2025-04-??
+* New: Optionally only enable for defined user IDs (new custom tweak)
+* New: Installable and updateable via [Git Updater plugin](https://git-updater.com/)
+* Improved: Admin Bar CSS for Block / Site Editor fullscreen mode
+* Fix: PHP warning on frontend
+* Update: `.pot` file, plus packaged German translations
+
 ### 🎉 v1.1.0 – 2025-03-25
 * New: Show Admin Bar also in Block Editor full screen mode
 * New: Support for _DevKit Pro_ plugin by DPlugins
@@ -200,4 +207,4 @@ Official "scissor" and _Code Snippets_ plugin/company logo icons: © Code Snippe
 
 Icon used in promo graphics: [© Remix Icon](https://remixicon.com/)
 
-Readme & Plugin Copyright © 2025 David Decker – DECKERWEB.de
+Readme & Plugin Copyright: © 2025, David Decker – DECKERWEB.de

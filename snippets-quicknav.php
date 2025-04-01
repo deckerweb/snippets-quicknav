@@ -1,19 +1,21 @@
 <?php
 /*
-Plugin Name:  Snippets QuickNav
-Plugin URI:   https://github.com/deckerweb/snippets-quicknav
-Description:  For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
-Project:      Code Snippet: DDW Snippets QuickNav
-Version:      1.2.0
-Author:       David Decker – DECKERWEB
-Author URI:   https://deckerweb.de/
-Text Domain:  snippets-quicknav
-Domain Path:  /languages/
-License:      GPL-2.0-or-later
-License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Requires WP:  6.7
-Requires PHP: 7.4
-Copyright:    © 2025, David Decker – DECKERWEB
+Plugin Name:       Snippets QuickNav
+Plugin URI:        https://github.com/deckerweb/snippets-quicknav
+Description:       For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
+Project:           Code Snippet: DDW Snippets QuickNav
+Version:           1.2.0
+Author:            David Decker – DECKERWEB
+Author URI:        https://deckerweb.de/
+Text Domain:       snippets-quicknav
+Domain Path:       /languages/
+License:           GPL-2.0-or-later
+License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+Requires WP:       6.7
+Requires PHP:      7.4
+GitHub Plugin URI: deckerweb/snippets-quicknav
+GitHub Branch:     master
+Copyright:         © 2025, David Decker – DECKERWEB
 
 Original Code Snippet Icons, Copyright: © Code Snippets Pro, Code Snippets B.V.
 All Other Icons, Copyright: © Remix Icon
@@ -29,7 +31,8 @@ Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-03-26	1.2.0		New: Optionally only enable for defined user IDs
+2025-04-01	1.2.0		New: Optionally only enable for defined user IDs (new custom tweak)
+						New: Installable and updateable via Git Updater plugin
 						Fix: PHP warning on frontend
 2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
 						New: Add info to Site Health Debug, useful for our constants for custom tweaking
@@ -271,12 +274,12 @@ class DDW_Snippets_QuickNav {
 				height: 12px !important;
 			}								
 			',
-			'80%',
-			'120%',
-			'100%',
-			'70%',
-			$base_color,
-			$hover_color
+			'80%',			// 1
+			'120%',			// 2
+			'100%',			// 3
+			'70%',			// 4
+			$base_color,	// 5
+			$hover_color	// 6
 		);
 		
 		/** Only add the styles if Admin Bar is showing */
@@ -1258,7 +1261,7 @@ class DDW_Snippets_QuickNav {
 		
 		$bg_color = $admin_scheme[ $user_color_scheme ][ 'bg' ];
 		
-		$inline_css = sprintf(
+		$inline_css_block_editor = sprintf(
 			'
 				@media (min-width: 600px) {
 					body.is-fullscreen-mode .block-editor__container {
@@ -1297,7 +1300,27 @@ class DDW_Snippets_QuickNav {
 			sanitize_hex_color( $bg_color )
 		);
 		
-		wp_add_inline_style( 'wp-block-editor', $inline_css );
+		wp_add_inline_style( 'wp-block-editor', $inline_css_block_editor );
+		
+		$inline_css_edit_site = sprintf(
+			'
+				body.is-fullscreen-mode .edit-site {
+					top: var(--wp-admin--admin-bar--height);
+				}
+				
+				body.is-fullscreen-mode .edit-site-layout__canvas-container {
+					top: calc( var(--wp-admin--admin-bar--height) * -1 );
+				}
+				
+				.edit-site-editor__view-mode-toggle .edit-site-editor__view-mode-toggle-icon img,
+				.edit-site-editor__view-mode-toggle .edit-site-editor__view-mode-toggle-icon svg {
+						background: %s;
+				}
+			',
+			sanitize_hex_color( $bg_color )
+		);
+		
+		wp_add_inline_style( 'wp-edit-site', $inline_css_edit_site );
 		
 		add_action( 'admin_bar_menu', array( $this, 'remove_adminbar_nodes' ), 999 );
 	}
@@ -1403,7 +1426,7 @@ class DDW_Snippets_QuickNav {
 				),
 				'SNQN_ENABLED_USERS' => array(
 					'label' => 'SNQN_ENABLED_USERS',
-					'value' => ( ! defined( 'SNQN_ENABLED_USERS' ) ? $string_undefined : ( SNQN_ENABLED_USERS ? $string_enabled . $string_value . implode( ', ', SNQN_ENABLED_USERS ) : $string_disabled ) ),
+					'value' => ( ! defined( 'SNQN_ENABLED_USERS' ) ? $string_undefined : ( SNQN_ENABLED_USERS ? $string_enabled . $string_value . implode( ', ', array_map( 'absint', SNQN_ENABLED_USERS ) ) : $string_disabled ) ),
 				),
 				'SNQN_NAME_IN_ADMINBAR' => array(
 					'label' => 'SNQN_NAME_IN_ADMINBAR',
@@ -1488,13 +1511,13 @@ function ddw_snqn_pluginrow_meta( $ddwp_meta, $ddwp_file ) {
 	 if ( $ddwp_file === trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . basename( __FILE__ ) ) {
 		 $ddwp_meta[] = sprintf(
 			 '<a class="button button-inline" href="https://ko-fi.com/deckerweb" target="_blank" rel="nofollow noopener noreferrer" title="%1$s">❤ <b>%1$s</b></a>',
-			 esc_html_x( 'Donate', 'Plugins page listing', 'advanced-scripts-quicknav' )
+			 esc_html_x( 'Donate', 'Plugins page listing', 'snippets-quicknav' )
 		 );
  
 		 $ddwp_meta[] = sprintf(
 			 '<a class="button-primary" href="%1$s" target="_blank" rel="nofollow noopener noreferrer" title="%2$s">⚡ <b>%2$s</b></a>',
 			 $url_nl,
-			 esc_html_x( 'Join our Newsletter', 'Plugins page listing', 'advanced-scripts-quicknav' )
+			 esc_html_x( 'Join our Newsletter', 'Plugins page listing', 'snippets-quicknav' )
 		 );
 	 }  // end if
  
