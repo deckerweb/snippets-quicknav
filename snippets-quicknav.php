@@ -13,7 +13,7 @@ License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 Requires WP:       6.7
 Requires PHP:      7.4
-GitHub Plugin URI: deckerweb/snippets-quicknav
+GitHub Plugin URI: https://github.com/deckerweb/snippets-quicknav
 GitHub Branch:     master
 Copyright:         © 2025, David Decker – DECKERWEB
 
@@ -31,7 +31,7 @@ Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
-2025-04-01	1.2.0		New: Optionally only enable for defined user IDs (new custom tweak)
+2025-04-05	1.2.0		New: Optionally only enable for defined user IDs (new custom tweak)
 						New: Installable and updateable via Git Updater plugin
 						Fix: PHP warning on frontend
 2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
@@ -158,9 +158,9 @@ class DDW_Snippets_QuickNav {
 		/**
 		 * Depending on user color scheme get proper base and hover color values for the main item (svg) icon.
 		 */
-		$user_color_scheme = get_user_option( 'admin_color' );
-		$user_color_scheme = is_network_admin() ? $user_color_scheme : 'fresh';  // b/c in frontend there is no 'admin_color'
-		$admin_scheme      = $this->get_scheme_colors();
+		$user_color_scheme = get_user_option( 'admin_color', FALSE );		
+		$user_color_scheme = ( is_admin() || is_network_admin() ) ? $user_color_scheme : 'fresh';  // b/c in frontend there is no 'admin_color'
+		$admin_scheme      = $this->get_scheme_colors();		
 		
 		$base_color  = $admin_scheme[ $user_color_scheme ][ 'base' ];
 		$hover_color = $admin_scheme[ $user_color_scheme ][ 'hover' ];
@@ -199,8 +199,7 @@ class DDW_Snippets_QuickNav {
 				height: 16px;
 			}
 			
-			.icon-svg.ab-icon svg {
-				/* color: inherit; */ /* currentColor; */	/* rgba(240,246,252,.6); */
+			#wpadminbar .has-icon .icon-svg.ab-icon svg {
 				width: 15px;
 				height: 15px;
 			}
@@ -210,7 +209,7 @@ class DDW_Snippets_QuickNav {
 			}
 			
 			.snqn-snippet-list .ab-item:hover .icon-svg.ab-icon svg {
-				color: %6$s;  /* inherit; */
+				color: %6$s;
 			}
 			
 			/** Badges */
@@ -1381,8 +1380,7 @@ class DDW_Snippets_QuickNav {
 		);
 	
 		wp_add_inline_style( 'wp-admin', $inline_css );
-	
-	}  // end function
+	}
 	
 	/**
 	 * Add additional plugin related info to the Site Health Debug Info section.
@@ -1393,6 +1391,8 @@ class DDW_Snippets_QuickNav {
 	 * @return array Modified array of Debug Info.
 	 */
 	public function site_health_debug_info( $debug_info ) {
+	
+		load_plugin_textdomain( 'snippets-quicknav', FALSE, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'languages' );
 	
 		$string_undefined = esc_html_x( 'Undefined', 'Site Health Debug info', 'snippets-quicknav' );
 		$string_enabled   = esc_html_x( 'Enabled', 'Site Health Debug info', 'snippets-quicknav' );
