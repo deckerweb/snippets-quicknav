@@ -14,7 +14,7 @@ The **Snippets QuickNav** plugin adds a quick-access navigator (aka QuickNav) to
 * Tags: code snippets, quicknav, admin bar, toolbar, site builder, administrators
 * Requires at least: 6.7
 * Requires PHP: 7.4
-* Stable tag: [master](https://github.com/deckerweb/snippets-quicknav/releases/latest)
+* Stable tag: [main](https://github.com/deckerweb/snippets-quicknav/releases/latest)
 * Donate link: https://paypal.me/deckerweb
 * License: GPL v2 or later
 
@@ -116,7 +116,7 @@ I don't know. Not everything needs to be built-in. That's what plugins are for: 
 Because I needed (and wanted!) it myself for the sites I maintain. [Read the backstory here ...](#plugins-backstory)
 
 ### Why is this plugin not on wordpress.org plugin repository?
-Because the restrictions there for plugin authors are becoming more and more. It would be possible but I don't want that anymore. The same for limited support forums for plugin authors on .org. I have decided to leave this whole thing behind me.
+Because the restrictions there for plugin authors are becoming more and more. It would be possible, yes, but I don't want that anymore. The same for limited support forums for plugin authors on .org. I have decided to leave this whole thing behind me.
 
 ---
 
