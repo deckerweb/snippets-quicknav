@@ -4,7 +4,7 @@ Plugin Name:       Snippets QuickNav
 Plugin URI:        https://github.com/deckerweb/snippets-quicknav
 Description:       For Code Snippets enthusiasts: Adds a quick-access navigator (aka QuickNav) to the WordPress Admin Bar (Toolbar). It allows easy access to your Code Snippets listed by Active, Inactive, Snippet Type or Tag. Safe Mode is supported. Comes with inspiring links to snippet libraries.
 Project:           Code Snippet: DDW Snippets QuickNav
-Version:           1.2.0
+Version:           1.3.0
 Author:            David Decker – DECKERWEB
 Author URI:        https://deckerweb.de/
 Text Domain:       snippets-quicknav
@@ -24,19 +24,20 @@ TESTED WITH:
 Product			Versions
 --------------------------------------------------------------------------------------------------------------
 PHP 			8.0, 8.3
-WordPress		6.7.2 ... 6.8 Beta
+WordPress		6.7.2 ... 6.8.1
 Code Snippets	3.6.8 / 3.6.9 (free & Pro)
 --------------------------------------------------------------------------------------------------------------
 
 VERSION HISTORY:
 Date		Version		Description
 --------------------------------------------------------------------------------------------------------------
+2025-05-09	1.3.0		New: Adjust menu position of main item
 2025-04-05	1.2.0		New: Optionally only enable for defined user IDs (new custom tweak)
 						New: Installable and updateable via Git Updater plugin
 						Fix: PHP warning on frontend
 2025-03-25	1.1.0		New: Show Admin Bar also in Block Editor full screen mode
 						New: Add info to Site Health Debug, useful for our constants for custom tweaking
-						New: Support for plugins "Systen Dashboard" and "DevKit Pro"
+						New: Support for plugins "System Dashboard" and "DevKit Pro"
 						Improved: Disable promo stuff only for free version (not globally)
 2025-03-21	1.0.0		Initial release 
 						- Supports Code Snippets free & Pro
@@ -54,8 +55,13 @@ if ( ! class_exists( 'DDW_Snippets_QuickNav' ) ) :
 class DDW_Snippets_QuickNav {
 
 	/** Class constants & variables */
-	private const VERSION = '1.2.0';
-	private const DEFAULT_MENU_POSITION	= 999;  // default: 999
+	private static $version;
+	private static $name;
+	private static $plugin_url;
+	private static $author_url;
+	private static $github_url;
+	
+	private static $menu_position = 999;  // default: 999
 		
 	private static $snippets_active   = 0;
 	private static $snippets_inactive = 0;
@@ -66,12 +72,36 @@ class DDW_Snippets_QuickNav {
 	 * Constructor
 	 */
 	public function __construct() {
-		add_action( 'admin_bar_menu',              array( $this, 'add_admin_bar_menu' ), self::DEFAULT_MENU_POSITION );
+		add_action( 'init',                        array( $this, 'show_quicknav' ), 20 );  // this will add the Admin Bar items
 		add_action( 'admin_enqueue_scripts',       array( $this, 'enqueue_admin_bar_styles' ) );  // for Admin
 		add_action( 'wp_enqueue_scripts',          array( $this, 'enqueue_admin_bar_styles' ) );  // for front-end
 		add_action( 'enqueue_block_editor_assets', array( $this, 'adminbar_block_editor_fullscreen' ) );  // for Block Editor
 		add_action( 'init',                        array( $this, 'free_cs_free' ), 20 );
+		
+		$plugin_data      = get_file_data( __FILE__, [ 'name' => 'Plugin Name', 'Version' => 'version', 'plugin_url' => 'Plugin URI', 'author_url' => 'Author URI', 'github_url' => 'GitHub Plugin URI' ] );
+		self::$version    = $plugin_data[ 'version' ];
+		self::$name       = $plugin_data[ 'name' ];
+		self::$plugin_url = $plugin_data[ 'plugin_url' ];
+		self::$author_url = $plugin_data[ 'author_url' ];
+		self::$github_url = $plugin_data[ 'github_url' ];
+		
 		add_filter( 'debug_information',           array( $this, 'site_health_debug_info' ), 9 );
+	}
+	
+	/**
+	 * Show the QuickNav menu, respect user-defined menu position.
+	 *
+	 * @since 1.3.0
+	 */
+	public function show_quicknav() {
+		
+		/** If user has defined a menu position, use that */
+		if ( defined( 'SNQN_MENU_POSITION' ) ) {
+			self::$menu_position = SNQN_MENU_POSITION;
+		}
+		
+		/** Finally, start the show :) */
+		add_action( 'admin_bar_menu', array( $this, 'add_admin_bar_menu' ), intval( self::$menu_position ) );
 	}
 	
 	/**
@@ -144,7 +174,7 @@ class DDW_Snippets_QuickNav {
 		);
 		
 		/** No filter currently b/c of sanitizing issues with the above CSS values */
-		//$scheme_colors = (array) apply_filters( 'ddw/quicknav/csn_scheme_colors', $scheme_colors );
+		//$scheme_colors = (array) apply_filters( 'ddw-snqn/wp-scheme-colors', $scheme_colors );
 		
 		return $scheme_colors;
 	}
@@ -158,12 +188,16 @@ class DDW_Snippets_QuickNav {
 		/**
 		 * Depending on user color scheme get proper base and hover color values for the main item (svg) icon.
 		 */
-		$user_color_scheme = get_user_option( 'admin_color', FALSE );		
-		$user_color_scheme = ( is_admin() || is_network_admin() ) ? $user_color_scheme : 'fresh';  // b/c in frontend there is no 'admin_color'
-		$admin_scheme      = $this->get_scheme_colors();		
+		$user_color_scheme = get_user_option( 'admin_color', FALSE );
 		
-		$base_color  = $admin_scheme[ $user_color_scheme ][ 'base' ];
-		$hover_color = $admin_scheme[ $user_color_scheme ][ 'hover' ];
+		$default_schemes = [ 'fresh', 'light', 'modern', 'blue', 'coffee', 'ectoplasm', 'midnight', 'ocean', 'sunrise' ];
+		
+		if ( ! in_array( $user_color_scheme, $default_schemes ) ) $user_color_scheme = 'inherit';
+		
+		$user_color_scheme = ( is_admin() || is_network_admin() ) ? $user_color_scheme : 'fresh';  // b/c in frontend there is no 'admin_color'
+		$admin_scheme = $this->get_scheme_colors();
+		$base_color   = ( 'inherit' === $user_color_scheme ) ? 'inherit' : $admin_scheme[ $user_color_scheme ][ 'base' ];
+		$hover_color  = ( 'inherit' === $user_color_scheme ) ? 'inherit' : $admin_scheme[ $user_color_scheme ][ 'hover' ];
 		
 		/**
 		 * Build the inline CSS
@@ -662,7 +696,7 @@ class DDW_Snippets_QuickNav {
 		);
 		
 		/** Make status array filterable */
-		apply_filters( 'ddw/quicknav/csn_status', $status_submenus );
+		apply_filters( 'ddw-snqn/csn-status', $status_submenus );
 		
 		foreach ( $status_submenus as $tab => $title ) {
 			$wp_admin_bar->add_node( array(
@@ -726,7 +760,7 @@ class DDW_Snippets_QuickNav {
 		}  // end if Pro version check
 		
 		/** Make types array filterable */
-		apply_filters( 'ddw/quicknav/csn_types', $type_submenus );
+		apply_filters( 'ddw-snqn/csn-types', $type_submenus );
 
 		$badge = '';
 		
@@ -908,7 +942,7 @@ class DDW_Snippets_QuickNav {
 		);
 		
 		/** Make settings array filterable */
-		apply_filters( 'ddw/quicknav/csn_settings', $settings_submenus );
+		apply_filters( 'ddw-snqn/settings-links', $settings_submenus );
 		
 		foreach ( $settings_submenus as $tab => $title ) {
 			$wp_admin_bar->add_node( array(
@@ -1103,7 +1137,7 @@ class DDW_Snippets_QuickNav {
 		);
 	
 		/** Make code libs array filterable */
-		apply_filters( 'ddw/quicknav/csn_codelibs', $codelibs );
+		apply_filters( 'ddw-snqn/csn-codelibs', $codelibs );
 	
 		foreach ( $codelibs as $id => $info ) {
 			$wp_admin_bar->add_node( array(
@@ -1191,7 +1225,7 @@ class DDW_Snippets_QuickNav {
 		);
 
 		/** Make links array filterable */
-		apply_filters( 'ddw/quicknav/csn_links', $links );
+		apply_filters( 'ddw-snqn/links/codesnippets', $links );
 		
 		foreach ( $links as $id => $info ) {
 			$wp_admin_bar->add_node( array(
@@ -1222,11 +1256,15 @@ class DDW_Snippets_QuickNav {
 		$about_links = array(
 			'author' => array(
 				'title' => __( 'Author: David Decker', 'snippets-quicknav' ),
-				'url'   => 'https://deckerweb.de/',
+				'url'   => self::$author_url,
 			),
+			/* 'plugin-website' => array(
+				'title' => __( 'Plugin Website', 'snippets-quicknav' ),
+				'url'   => self::$plugin_url,
+			), */
 			'github' => array(
 				'title' => __( 'Plugin on GitHub', 'snippets-quicknav' ),
-				'url'   => 'https://github.com/deckerweb/snippets-quicknav',
+				'url'   => self::$github_url,
 			),
 			'kofi' => array(
 				'title' => __( 'Buy Me a Coffee', 'snippets-quicknav' ),
@@ -1406,13 +1444,13 @@ class DDW_Snippets_QuickNav {
 	
 		/** Add our Debug info */
 		$debug_info[ 'snippets-quicknav' ] = array(
-			'label'  => esc_html__( 'Snippets QuickNav', 'snippets-quicknav' ) . ' (' . esc_html__( 'Plugin', 'snippets-quicknav' ) . ')',
+			'label'  => self::$name . ' (' . esc_html__( 'Plugin', 'snippets-quicknav' ) . ')',
 			'fields' => array(
 	
 				/** Various values */
 				'snqn_plugin_version' => array(
 					'label' => esc_html__( 'Plugin version', 'snippets-quicknav' ),
-					'value' => self::VERSION,
+					'value' => self::$version,
 				),
 				'snqn_install_type' => array(
 					'label' => esc_html__( 'WordPress Install Type', 'snippets-quicknav' ),
@@ -1422,11 +1460,15 @@ class DDW_Snippets_QuickNav {
 				/** Snippets QuickNav constants */
 				'SNQN_VIEW_CAPABILITY' => array(
 					'label' => 'SNQN_VIEW_CAPABILITY',
-					'value' => ( ! defined( 'SNQN_VIEW_CAPABILITY' ) ? $string_undefined : ( SNQN_VIEW_CAPABILITY ? $string_enabled : $string_disabled ) ),
+					'value' => ( ! defined( 'SNQN_VIEW_CAPABILITY' ) ? $string_undefined : ( SNQN_VIEW_CAPABILITY ? $string_enabled . $string_value . sanitize_key( SNQN_VIEW_CAPABILITY ) : $string_disabled ) ),
 				),
 				'SNQN_ENABLED_USERS' => array(
 					'label' => 'SNQN_ENABLED_USERS',
 					'value' => ( ! defined( 'SNQN_ENABLED_USERS' ) ? $string_undefined : ( SNQN_ENABLED_USERS ? $string_enabled . $string_value . implode( ', ', array_map( 'absint', SNQN_ENABLED_USERS ) ) : $string_disabled ) ),
+				),
+				'SNQN_MENU_POSITION' => array(
+					'label' => 'SNQN_MENU_POSITION',
+					'value' => ( ! defined( 'SNQN_MENU_POSITION' ) ? $string_undefined : ( SNQN_MENU_POSITION ? $string_enabled . $string_value . intval( self::$menu_position ) : $string_disabled ) ),
 				),
 				'SNQN_NAME_IN_ADMINBAR' => array(
 					'label' => 'SNQN_NAME_IN_ADMINBAR',
@@ -1446,7 +1488,7 @@ class DDW_Snippets_QuickNav {
 				),
 				'SNQN_DISABLE_FOOTER' => array(
 					'label' => 'SNQN_DISABLE_FOOTER',
-					'value' => ( ! defined( 'SNQN_DISABLE_FOOTER' ) ? $string_undefined : ( SNQN_DISABLE_FOOTER ? $string_enabled : $string_disabled ) ),
+					'value' => ( ! defined( 'SNQN_DISABLE_FOOTER' ) ? $string_undefined : ( 'yes' === SNQN_DISABLE_FOOTER ? $string_enabled : $string_disabled ) ),
 				),
 				'SNQN_EXPERT_MODE' => array(
 					'label' => 'SNQN_EXPERT_MODE',
@@ -1454,7 +1496,7 @@ class DDW_Snippets_QuickNav {
 				),
 				'SNQN_FREE_CS_FREE' => array(
 					'label' => 'SNQN_FREE_CS_FREE',
-					'value' => ( ! defined( 'SNQN_FREE_CS_FREE' ) ? $string_undefined : ( SNQN_FREE_CS_FREE ? $string_enabled : $string_disabled ) ),
+					'value' => ( ! defined( 'SNQN_FREE_CS_FREE' ) ? $string_undefined : ( 'yes' === SNQN_FREE_CS_FREE ? $string_enabled : $string_disabled ) ),
 				),
 				'SNQN_CODE_SNIPPETS_SAFE_MODE' => array(
 					'label' => 'CODE_SNIPPETS_SAFE_MODE',
@@ -1521,7 +1563,7 @@ function ddw_snqn_pluginrow_meta( $ddwp_meta, $ddwp_file ) {
 		 );
 	 }  // end if
  
-	 return apply_filters( 'ddw/admin_extras/pluginrow_meta', $ddwp_meta );
+	 return apply_filters( 'ddw-snqn/pluginrow-meta', $ddwp_meta );
  
  }  // end function
  

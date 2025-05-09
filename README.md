@@ -40,17 +40,20 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 ## Installation 
 
 #### **Quick Install – as Plugin**
+[![Download Plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/refs/heads/main/assets/button-download-plugin.png)](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/snippets-quicknav.zip)
+
 1. **Download ZIP:** [**snippets-quicknav.zip**](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/snippets-quicknav.zip)
 2. Upload via WordPress Plugins > Add New > Upload Plugin
 3. Once activated, you’ll see the **Snippets** menu item in the Admin Bar.
 
 #### **Alternative: Use as Code Snippet**
+[![Download Code Snippet](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/refs/heads/main/assets/button-download-snippet.png)](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/ddw-snippets-quicknav.code-snippets.json)  
 1. Below, download the appropriate snippet version
-2. activate or deactivate in your snippets plugin
+2. Activate or deactivate in _Code Snippets_ plugin
 
 [**Download .json**](https://github.com/deckerweb/snippets-quicknav/releases/latest/download/ddw-snippets-quicknav.code-snippets.json) version for _Code Snippets_ (free & Pro) just use the "Import" page.
 
---> Please decide for one of both alternatives!
+➔ Please decide for one of both alternatives!
 
 #### Minimum Requirements 
 * WordPress version 6.7 or higher
@@ -60,7 +63,7 @@ Enjoying the plugin? Feel free to treat me to a cup of coffee ☕🙂 through th
 
 #### Tested Compatibility
 - **Latest Code Snippets free & Pro**: 3.6.8 / 3.6.9 (including with Multisite)
-- **WordPress**: 6.7.2 / 6.8 Beta (including Multisite)
+- **WordPress**: 6.7.2 ... 6.8.1 (including Multisite)
 - **PHP**: 8.0 – 8.3
 
 ---
@@ -106,29 +109,30 @@ Just manually: Download the latest Snippet version (see above) and import it in 
 
 ## Frequently Asked Questions 
 
-### How can I change / tweak things?
+### How can I change / tweak things? 
 Please see here under [**Custom Tweaks via Constants**](#custom-tweaks-via-constants) what is possible!
 
-### Why is this functionality not baked into Code Snippets itself?
+### Why is this functionality not baked into Code Snippets itself? 
 I don't know. Not everything needs to be built-in. That's what plugins are for: those who _need_ this functionality can install and use them. Or better, [just use it as Code Snippet](#installation) in _Code Snippet_ itself. Done :-)
 
-### Why did you create this plugin?
+### Why did you create this plugin? 
 Because I needed (and wanted!) it myself for the sites I maintain. [Read the backstory here ...](#plugins-backstory)
 
-### Why is this plugin not on wordpress.org plugin repository?
+### Why is this plugin not on wordpress.org plugin repository? 
 Because the restrictions there for plugin authors are becoming more and more. It would be possible, yes, but I don't want that anymore. The same for limited support forums for plugin authors on .org. I have decided to leave this whole thing behind me.
 
 ---
 
 ## Custom Tweaks via Constants 
 
-### Default capability (aka permission)
+### Default capability (aka permission) 
 The intended usage of this plugin is for Administrator users only. Therefore the default capability to see the new Admin Bar node is set to `activate_plugins`. You can change this via the constant `SNQN_VIEW_CAPABILITY` – define that via `wp-config.php` or via Code Snippet plugin:
 ```
 define( 'SNQN_VIEW_CAPABILITY', 'activate_plugins' );
 ```
 
-### Restrict to defined user IDs only (since v1.2.0)
+
+### Restrict to defined user IDs only (since v1.2.0) 
 You can define an array of user IDs (can also be only _one_ ID) and that way restrict showing the Snippets Admin Bar item only for those users. Define that via `wp-config.php` or via Code Snippet plugin:
 ```
 define( 'SNQN_ENABLED_USERS', [ 1, 500, 867 ] );
@@ -141,17 +145,28 @@ define( 'SNQN_ENABLED_USERS', [ 1 ] );
 ```
 That way only you can see it, the other admins can't!
 
-### Name of main menu item
+
+### Position of main menu item (since v1.3.0) 
+You can define an integer value to adjust the menu position of the main menu item. Define that via `wp-config.php` or via _Code Snippets_ plugin:
+```
+define( 'SNQN_MENU_POSITION', 81 );
+```
+This example will place it somewhere after the default "+ New" item. Note: the default value is `999` which puts the item quite on the middle or right side of the Admin Bar.
+
+
+### Name of main menu item 
 The default is just "Snippets" – catchy and short. However, if you don't enjoy "Snippets" you can tweak that also via the constant `SNQN_NAME_IN_ADMINBAR` – define that also via `wp-config.php` or via Code Snippet plugin:
 ```
 define( 'SNQN_NAME_IN_ADMINBAR', 'Codes' );
 ```
 
-### Snippets count – addition to main menu item:
+
+### Snippets count – addition to main menu item: 
 ![With Counter -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/with-counter.png)
 ```
 define( 'SNQN_COUNTER', 'yes' );
 ```
+
 
 ### Default icon of main menu item 
 ![Icon Alternatives -- Snippets QuickNav plugin](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/icon-alternatives.png)
@@ -163,19 +178,22 @@ define( 'SNQN_ICON', 'red_blue' );  // Code Snippets company logo
 define( 'SNQN_ICON', 'remix' );  // code icon by Remix Icon
 ```
 
-### Disable code snippets library items
+
+### Disable code snippets library items 
 Removes the "Find Snippets" section
 ```
 define( 'SNQN_DISABLE_LIBRARY', 'yes' );
 ```
 
-### Disable footer items (Links & About)
+
+### Disable footer items (Links & About) 
 Removes the "Links" & "About" sections
 ```
 define( 'SNQN_DISABLE_FOOTER', 'yes' );
 ```
 
-### **Enable** "Expert Mode"
+
+### **Enable** "Expert Mode" 
 Nothing really fancy, just some additional links for coders:
 - _Site Health Info_ (WP Core)
 - Plugin: _DevKit Pro_ by DPlugins
@@ -187,7 +205,8 @@ define( 'SNQN_EXPERT_MODE', TRUE );
 ```
 Note: Support for _some_ additional stuff in that mode may come in future.
 
-### **Fair Play:** Enable "free CS free" – to remove some promo stuff ...
+
+### **Fair Play:** Enable "free CS free" – to remove some promo stuff ... 
 If you want the Pro promotions go away, use the following snippet ... or just purchase the Pro version to support the developers. Thank you in advance! (And thanks to the Code Snippets team for making this awesome tool for us site builders and developers!)
 ```
 define( 'SNQN_FREE_CS_FREE', 'yes' );
@@ -202,7 +221,13 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 
 **The Releases**
 
-### 🎉 v1.2.0 – 2025-04-05
+### 🎉 v1.3.0 – 2025-05-09 
+* New: Adjust the menu position of main item in the Admin Bar _(new custom tweak)_
+* Improve: Internal code enhancements
+* Update: `.pot` file, plus packaged German translations
+
+
+### 🎉 v1.2.0 – 2025-04-05 
 * New: Optionally only enable for defined user IDs _(new custom tweak)_
 * New: Installable and updateable via [Git Updater plugin](https://git-updater.com/)
 * Improved: Admin Bar CSS for Block / Site Editor fullscreen mode
@@ -210,7 +235,8 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 * Fix: Minor styling issues for top-level item
 * Update: `.pot` file, plus packaged German translations, now including new `l10n.php` files!
 
-### 🎉 v1.1.0 – 2025-03-25
+
+### 🎉 v1.1.0 – 2025-03-25 
 * New: Show Admin Bar also in Block Editor full screen mode
 * New: Support for _DevKit Pro_ plugin by DPlugins
 * New: Support for _System Dashboard_ plugin by Bowo
@@ -220,7 +246,8 @@ define( 'SNQN_FREE_CS_FREE', 'yes' );
 * Plugin: Add meta links on WP Plugins page
 * Update: `.pot` file, plus packaged German translations
 
-### 🎉 v1.0.0 – 2025-03-21
+
+### 🎉 v1.0.0 – 2025-03-21 
 * Initial release
 * Includes support for _Code Snippets_ **free** AND **Pro** version
 * Includes support for WordPress Multisite installs and respects Code Snippets free behavior (and settings) in there
