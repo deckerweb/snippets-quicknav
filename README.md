@@ -1,3 +1,51 @@
+# Snippets QuickNav is now part of Code Snippets — free & Pro!
+
+> [!IMPORTANT]
+> **My toolbar integration is now built into both the free and Pro versions of Code Snippets — it is already included in the free version! :-)**
+>
+> **Snippets QuickNav is no longer needed. It has served its purpose, and this repository is now archived.**
+
+A heartfelt thank you to the **Code Snippets team**! This is what true partnership in WordPress looks like — code snippets really do connect people. ;-)
+
+Creating this plugin had been a long-held wish of mine, and in spring 2025 I finally made it happen. It is a great honor that my code is now available to more than one million WordPress users through Code Snippets and that people enjoy using it.
+
+I have been using Code Snippets myself since 2012, when the plugin first launched. I especially enjoy using it on WordPress Multisite.
+
+**Give Code Snippets a try — the Pro version is well worth it, too:**
+
+- [Official Code Snippets website — including Pro](https://codesnippets.pro/)
+- [Code Snippets on WordPress.org — free version](https://wordpress.org/plugins/code-snippets/)
+
+---
+
+# Snippets QuickNav ist jetzt Teil von Code Snippets – free & Pro!
+
+> [!IMPORTANT]
+> **Meine Toolbar-Integration ist jetzt direkt in Code Snippets enthalten – sowohl in der kostenlosen als auch in der Pro-Version. Sie ist also bereits in free dabei! :-)**
+>
+> **Snippets QuickNav wird nicht mehr benötigt. Es hat seinen Dienst getan, und dieses Repository ist nun archiviert.**
+
+Ein herzliches Dankeschön an das **Code Snippets Team**! So geht wahre Partnerschaft in WordPress – Code Snippets verbinden eben. ;-)
+
+Dieses Plugin war ein lange gehegter Wunsch von mir, den ich mir im Frühjahr 2025 endlich erfüllen konnte. Es ist mir eine große Ehre, dass mein Code nun über Code Snippets mehr als einer Million WordPress-Nutzern zur Verfügung steht und gern genutzt wird.
+
+Selbst verwende ich Code Snippets seit 2012, also seit Bestehen des Plugins. Besonders gern setze ich es auch in WordPress Multisite ein.
+
+**Auch du solltest Code Snippets ausprobieren – die Pro-Version lohnt sich ebenfalls:**
+
+- [Offizielle Website von Code Snippets – inklusive Pro](https://codesnippets.pro/)
+- [Code Snippets auf WordPress.org – kostenlose Version](https://wordpress.org/plugins/code-snippets/)
+
+---
+
+---
+
+## Original README / Ursprüngliche README
+
+The original README below is preserved for historical reference. Its installation, update, and support information describes the former standalone plugin.
+
+Die ursprüngliche README bleibt nachfolgend zur Dokumentation erhalten. Ihre Angaben zu Installation, Updates und Support beziehen sich auf das frühere eigenständige Plugin.
+
 # Snippets QuickNav (for the _Code Snippets_ Plugin)
 
 ![Snippets QuickNav plugin in action](https://raw.githubusercontent.com/deckerweb/snippets-quicknav/master/assets-github/snippets-quicknav-screenshot.png)
